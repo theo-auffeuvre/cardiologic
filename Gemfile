@@ -75,3 +75,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "devise"
+gem 'bootstrap', '~> 5.2.2'
+gem 'awesome_print'
