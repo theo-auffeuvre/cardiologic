@@ -71,9 +71,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_151737) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "consultations", "consultations", column: "cardiologist_user_id"
-  add_foreign_key "consultations", "consultations", column: "general_practitioner_user_id"
   add_foreign_key "consultations", "patients"
+  add_foreign_key "consultations", "users", column: "cardiologist_user_id"
+  add_foreign_key "consultations", "users", column: "general_practitioner_user_id"
   add_foreign_key "ecgs", "patients"
   add_foreign_key "messages", "consultations"
   add_foreign_key "messages", "users"

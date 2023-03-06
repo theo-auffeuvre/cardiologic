@@ -6,15 +6,14 @@ class ConsultationsController < ApplicationController
   end
 
   def create
-    raise
     @consultation = Consultation.new(consultation_params)
+    @consultation.general_practitioner_user = current_user
     @consultation.save!
-    raise
   end
 
   private
 
   def consultation_params
-    params.require(:consultation).permit(patients_attributes: [:first_name, :last_name, :birth_date, :height, :weight])
+    params.require(:consultation).permit(patient_attributes: [:first_name, :last_name, :birth_date, :height, :weight])
   end
 end
