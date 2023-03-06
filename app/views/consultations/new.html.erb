@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class ="col-6">
+      <%= simple_form_for @consultation do |c| %>
+        <%= c.simple_fields_for :patients do |p|%>
+          <%= p.input :first_name%>
+          <%= p.input :last_name %>
+          <%= p.input :birth_date, as: :date %>
+          <%= p.input :height %>
+          <%= p.input :weight %>
+          <%# <%= f.input :photo, as: :file %>
+        <%end%>
+        <div class="d-flex justify-content-center"><%= c.button :submit, class: 'btn btn-primary'%></div>
+      <% end %>
+    </div>
+  </div>
+</div>
