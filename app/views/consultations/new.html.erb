@@ -10,6 +10,7 @@
           <%= p.input :weight %>
           <%# <%= f.input :photo, as: :file %>
         <% end %>
+        <%= c.input :file, as: :file, input_html: {} %>
         <div class="d-flex justify-content-center"><%= c.button :submit, class: 'btn btn-primary'%></div>
       <% end %>
     </div>
