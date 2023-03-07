@@ -10,11 +10,12 @@ class ConsultationsController < ApplicationController
   def create
     @consultation = Consultation.new(consultation_params)
     @consultation.general_practitioner_user = current_user
-    @mat_file = params[:consultation][:file].tempfile unless params[:consultation][:file].nil?
+    @mat_file = params[:consultation][:file].tempfile.path unless params[:consultation][:file].nil?
     @data_ecg = upload_convert(@mat_file)
     @data_ecg.shift
     @ecg = Ecg.new(data: @data_ecg.to_json)
     @ecg.patient = @consultation.patient
+    raise
     @ecg.save!
     @consultation.save!
   end
@@ -26,7 +27,8 @@ class ConsultationsController < ApplicationController
   end
 
   def upload_convert(mat_file)
-    system("python3 app/python/converter.py")
+    p mat_file
+    system("python3 app/python/converter.py '#{mat_file}'")
     array = []
     CSV.foreach('test.csv') do |line|
       array << [line[0], line[1]]
