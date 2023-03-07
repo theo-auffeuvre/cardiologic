@@ -4,5 +4,7 @@
 <%#= @consultation.diagnostic %>
 
 <% if @consultation.diagnostic == "rouge" %>
-<%= render "chat" %>
+<div class="container consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>%">
+  <%= render "chat" %>
+</div>
 <% end %>

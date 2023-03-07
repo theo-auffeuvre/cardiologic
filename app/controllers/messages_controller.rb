@@ -8,16 +8,31 @@ class MessagesController < ApplicationController
 
     if @message.save
       redirect_to consultation_path(@consultation)
+      ConsultationChannel.broadcast_to(
+        @consultation,
+        render_to_string(partial: "message", locals: {message: @message})
+      )
+      head :ok
     else render "consultations/show", status: :unprocessable_entity
     end
   end
 
   def createsandwich
+    @consultation = Consultation.find(params[:consultation])
     @message = Message.new(content: params[:content])
-    @message.consultation = Consultation.find(params[:consultation])
+    @message.consultation = @consultation
     @message.user = current_user
 
-    @message.save
+    if @message.save
+
+      ConsultationChannel.broadcast_to(
+        @consultation,
+        render_to_string(partial: "message", locals: {message: @message})
+      )
+      head :ok
+    else
+      render "consultations/show", status: :unprocessable_entity
+    end
   end
 
   private
