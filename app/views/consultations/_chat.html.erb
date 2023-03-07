@@ -1,12 +1,14 @@
 <h1>Chat</h1>
 <div class="messages" data-consultation-subscription-target="messages">
   <% @consultation.messages.each do | message | %>
-    <div id="message-<%= message.id %>">
-      <small>
-      <%= message.user_id %>
-      <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-      </small>
-      <p><%= message.content %></p>
+    <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>" id="message-<%= message.id %>">
+      <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+        <small>
+        <%= message.user_id %>
+        <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= message.content %></p>
+      </div>
     </div>
   <% end %>
 </div>

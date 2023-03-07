@@ -1,0 +1,29 @@
+
+
+
+// To style the wrapping div
+.message-row {
+  margin-bottom: 10px;
+  padding: 0.2rem;
+  color: rgba(0, 0, 0, 0.6)
+}
+
+// To style the message itself
+.sender-style, .receiver-style {
+  width: 70%;
+  max-width: 400px;
+  padding: 8px;
+  min-height: 80px;
+}
+
+.sender-style {
+  background-color: lightcoral;
+  border-radius: 1rem 1rem 0 1rem;
+
+}
+
+.receiver-style {
+  background-color: lightblue;
+  border-radius: 1rem 1rem 1rem 0;
+
+}
