@@ -1,4 +1,5 @@
 require 'csv'
+require "chartkick"
 
 class ConsultationsController < ApplicationController
 
@@ -18,6 +19,13 @@ class ConsultationsController < ApplicationController
     raise
     @ecg.save!
     @consultation.save!
+    redirect_to consultation_path(@consultation)
+  end
+
+  def show
+    @consultation = Consultation.find(params[:id])
+    @data = JSON.parse(@consultation.patient.ecgs.last.data)
+
   end
 
   private
@@ -35,5 +43,5 @@ class ConsultationsController < ApplicationController
     end
     return array
   end
- 
+
 end
