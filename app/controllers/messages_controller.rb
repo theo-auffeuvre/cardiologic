@@ -12,12 +12,18 @@ class MessagesController < ApplicationController
     end
   end
 
+  def createsandwich
+    @message = Message.new(content: params[:content])
+    @message.consultation = Consultation.find(params[:consultation])
+    @message.user = current_user
+
+    @message.save
+  end
+
   private
 
   def message_params
     params.require(:message).permit(:content)
-
   end
-
 
 end

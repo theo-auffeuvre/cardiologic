@@ -33,7 +33,7 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:id])
     @data = JSON.parse(@consultation.patient.ecgs.last.data)
     @message = Message.new
-    @consultation.diagnostic = "vert"
+    @consultation.diagnostic = "rouge"
 
 
   end
