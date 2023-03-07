@@ -14,9 +14,16 @@ class ConsultationsController < ApplicationController
     @mat_file = params[:consultation][:file].tempfile.path unless params[:consultation][:file].nil?
     @data_ecg = upload_convert(@mat_file)
     @data_ecg.shift
+    @peeks = peeks_extractor(@data_ecg)
+    @intervals = []
+    @peeks.each_with_index do |peek, index|
+      @intervals << @peeks[index + 1][0].to_i - peek[0].to_i unless @peeks[index + 1].nil?
+    end
+    @intervals_in_ms = @intervals.map { |interval| interval*1000/360 }
+    @criticity = choose_criticity(@intervals_in_ms)
+    @consultation.diagnostic = @criticity
     @ecg = Ecg.new(data: @data_ecg.to_json)
     @ecg.patient = @consultation.patient
-    raise
     @ecg.save!
     @consultation.save!
     redirect_to consultation_path(@consultation)
@@ -25,7 +32,6 @@ class ConsultationsController < ApplicationController
   def show
     @consultation = Consultation.find(params[:id])
     @data = JSON.parse(@consultation.patient.ecgs.last.data)
-
   end
 
   private
@@ -42,6 +48,44 @@ class ConsultationsController < ApplicationController
       array << [line[0], line[1]]
     end
     return array
+  end
+
+  def peeks_extractor(data)
+    @maxs = []
+    tmp_array = []
+    inArray = false
+    data.each do |item|
+        if item[1].to_i > 1127
+          if inArray == true
+            tmp_array << item
+          else
+            tmp_array << item
+            inArray = true
+          end
+        else
+          if inArray == true
+            @maxs << tmp_array
+            tmp_array = []
+            inArray = false
+          end
+        end
+    end
+
+    @peeks = []
+    @maxs.each do |peek|
+      @peeks << peek.max
+    end    
+    return @peeks
+  end
+
+  def choose_criticity(intervals)
+    if intervals.max > 2000
+      "red"
+    elsif (intervals.sort[-2] - intervals.sort[1]) > 500
+      "orange"
+    else
+      "green"
+    end
   end
 
 end
