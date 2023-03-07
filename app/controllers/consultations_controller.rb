@@ -32,6 +32,10 @@ class ConsultationsController < ApplicationController
   def show
     @consultation = Consultation.find(params[:id])
     @data = JSON.parse(@consultation.patient.ecgs.last.data)
+    @message = Message.new
+    @consultation.diagnostic = "vert"
+
+
   end
 
   private
@@ -74,7 +78,7 @@ class ConsultationsController < ApplicationController
     @peeks = []
     @maxs.each do |peek|
       @peeks << peek.max
-    end    
+    end
     return @peeks
   end
 

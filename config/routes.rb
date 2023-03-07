@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :consultations, only: %i[new create show] do
     resources :users, only: %i[new create]
+    resources :messages, only: :create
   end
 end
