@@ -7,5 +7,8 @@ import { application } from "./application"
 import ConsultationSubscriptionController from "./consultation_subscription_controller"
 application.register("consultation-subscription", ConsultationSubscriptionController)
 
+import DragDropController from "./drag_drop_controller"
+application.register("drag-drop", DragDropController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
