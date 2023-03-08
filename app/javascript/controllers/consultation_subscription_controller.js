@@ -8,11 +8,11 @@ export default class extends Controller {
   static targets = ["messages"]
   connect() {
     this.channel = createConsumer().subscriptions.create(
-      { channel: "ConsultationChannel", id: 9},
+      { channel: "ConsultationChannel", id: this.consultationIdValue},
       { received: data => this.#insertMessageAndScrollDown(data) },
     );
     console.log(this.messagesTarget);
-    console.log(`Subscribed to the consultation with the id ${9}`)
+    console.log(`Subscribed to the consultation with the id ${this.consultationIdValue}`)
   }
 
   #insertMessageAndScrollDown(data) {

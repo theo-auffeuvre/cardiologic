@@ -1,0 +1,87 @@
+
+
+
+// To style the wrapping div
+.message-row {
+  margin-bottom: 10px;
+  padding: 0.2rem;
+  color: rgba(0, 0, 0, 0.6)
+}
+
+// To style the message itself
+.sender-style, .receiver-style {
+  width: 70%;
+  max-width: 400px;
+  padding: 8px;
+  min-height: 80px;
+}
+
+.sender-style {
+  background-color: lightcoral;
+  border-radius: 1rem 1rem 0 1rem;
+  animation-name: rubberBand;
+
+}
+
+.receiver-style {
+  background-color: lightblue;
+  border-radius: 1rem 1rem 1rem 0;
+}
+receiver-style.hover {
+  background-color: rgb(113, 148, 160);
+  border-radius: 1rem 1rem 1rem 0;
+  animation-name: rubberBand;
+}
+
+
+
+ul.dots > li:hover > a > span > mark.rubberBand {
+  -webkit-animation-name: rubberBand;
+          animation-name: rubberBand;
+}
+
+.a:hover.rubberband {
+  display: block;
+  -webkit-animation-name: rubberBand;
+          animation-name: rubberBand;
+}
+
+
+
+
+@keyframes rubberBand {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+            transform: scale3d(.95, 1.05, 1);
+  }
+
+  75% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+            transform: scale3d(1.05, .95, 1);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
