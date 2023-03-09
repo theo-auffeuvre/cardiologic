@@ -9,3 +9,9 @@ application.register("consultation-subscription", ConsultationSubscriptionContro
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import PartialRenderingController from "./partial_rendering_controller"
+application.register("partial-rendering", PartialRenderingController)
+
+import TotoController from "./toto_controller"
+application.register("toto", TotoController)

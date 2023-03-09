@@ -1,10 +1,41 @@
-<%= line_chart @data, min: 500, points: false %>
 
 
-<%#= @consultation.diagnostic %>
 
-<% if @consultation.diagnostic == "rouge" %>
-<div class="container consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
-  <%= render "chat" %>
+
+
+<!--
+<div class="row">
+  <div data-controller="partial-rendering">
+    <button data-action="click->partial-rendering#show">ACTION</button>
+    <div data-partial-rendering-target="results">resultat</div>
+        <div class="d-none scale-up-br" data-partial-rendering-target="enveloppe"><%= render "enveloppe" %></div>
+
+  </div>
 </div>
-<% end %>
+-->
+<div class="ecg-flex-container">
+
+
+    <div class="capsuleLeft scale-up-bl">
+      <h1>Résultat de l'analyse</h1>
+
+      <div style="animation-delay: 2s;background-color:white; border-radius:1rem;" class="fadeIn">
+      <%= line_chart @data, min: 500, points: false %>
+      </div>
+    </div>
+
+    <div class="capsuleRight scale-up-br">
+      <%#= @consultation.diagnostic %>
+      <% if @consultation.diagnostic == "rouge" %>
+      <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
+        <%= render "chat" %>
+      </div>
+      <% end %>
+
+    </div>
+
+
+
+
+
+</div> <!-- end ecg flex container -->
