@@ -26,6 +26,7 @@ class ConsultationsController < ApplicationController
     @ecg.patient = @consultation.patient
     @ecg.save!
     @consultation.save!
+    send_mail()
     redirect_to consultation_path(@consultation)
   end
 
@@ -34,8 +35,6 @@ class ConsultationsController < ApplicationController
     @data = JSON.parse(@consultation.patient.ecgs.last.data)
     @message = Message.new
     @consultation.diagnostic = "rouge"
-
-
   end
 
   private
@@ -90,6 +89,10 @@ class ConsultationsController < ApplicationController
     else
       "green"
     end
+  end
+
+  def send_mail
+    ConsultationMailer.send_email().deliver_later
   end
 
 end
