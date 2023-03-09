@@ -148,4 +148,8 @@ class ConsultationsController < ApplicationController
     end
   end
 
+  def send_mail
+    ConsultationMailer.send_email().deliver_later
+  end
+
 end

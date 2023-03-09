@@ -1,10 +1,17 @@
 
+<h4>Patient informations:</h4>
+<p>First Name:<%= @consultation.patient.first_name %></p>
+<p>Last name:<%= @consultation.patient.last_name %> </p>
+<p>Birth date:<%= @consultation.patient.birth_date%></p>
+<p><%= @consultation.patient.height%>cm</p>
+<p><%= @consultation.patient.weight%>kg</p>
 
 
 
 
 
 <div class="ecg-flex-container" style="margin-bottom:3rem;">
+
     <h1>Résultat de l'analyse</h1>
 </div>
 <div class="ecg-flex-container">

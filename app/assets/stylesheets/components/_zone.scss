@@ -1,0 +1,14 @@
+#zone {
+  height: 350px;
+  width: 100%;
+  border: 4px dashed #CCCCCC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+#zone.hover {
+  border-color: #CCCCCC;
+  border-style: solid;
+}

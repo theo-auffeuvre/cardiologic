@@ -2,39 +2,26 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="drag-drop"
 export default class extends Controller {
-  connect() {
-    console.log("controller connecté")
-  }
+    static targets = [ 'input','zone' ]
 
- dropHandler(ev) {
-    console.log("File(s) dropped");
-
-    // Prevent default behavior (Prevent file from being opened)
-    ev.preventDefault();
-
-
-    if (ev.dataTransfer.items) {
-      console.log(items)
-      // Use DataTransferItemList interface to access the file(s)
-      [ev.dataTransfer.items].forEach((item, i) => {
-        // If dropped items aren't files, reject them
-        if (item.kind === "file") {
-          const file = item.getAsFile();
-          console.log(`… file[${i}].name = ${file.name}`);
-        }
-      });
-    } else {
-      // Use DataTransfer interface to access the file(s)
-      [...ev.dataTransfer.files].forEach((file, i) => {
-        console.log(`… file[${i}].name = ${file.name}`);
-      });
+    connect(){
+      console.log("controller drag-drop connecté !");
     }
-  }
 
-dragOverHandler(ev) {
-    console.log("File(s) in drop zone");
+    drop(event) {
+        event.preventDefault();
+        this.inputTarget.files = event.dataTransfer.files;
+        this.zoneTarget.innerText = event.dataTransfer.files[0].name;
+      }
 
-    // Prevent default behavior (Prevent file from being opened)
-    ev.preventDefault();
+      dragover(event) {
+        this.zoneTarget.classList.add('hover');
+        event.preventDefault();
+
+      }
+
+      dragleave(event) {
+        this.zoneTarget.classList.remove('hover');
+        event.preventDefault();
+      }
   }
-}
