@@ -1,0 +1,89 @@
+.toto-title {
+  color: red;
+  animation: toto 2s;
+}
+
+// wrapper col1 flex et col 2 flex shrink
+.ecg-flex-container{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.capsuleLeft, .capsuleRight {
+  border-radius: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.capsuleLeft {
+  background-color: rgba(245, 245, 245, 1);
+
+  flex-grow: 1;
+}
+.capsuleRight {
+  background-color: #FAA2A2;
+
+}
+
+
+
+$cd-btn-start: rgba(235, 20, 243, 0);
+$cd-btn-end: rgb(80, 201, 36);
+
+.bouton {
+  background-color: cd-btn-start;
+  border: 4px solid cd-btn-end;
+  border-radius: 10rem;
+  cursor: pointer;
+  font-size: 1rem;
+  overflow: hidden;
+  padding: 1.85rem 3rem;
+  position: relative;
+  transition: transform 450ms, background-color 300ms 150ms;
+  &:hover {
+      transform: scale(1.13);
+      background-color: cd-btn-end;
+  }
+}
+
+
+
+.capsule {
+  background-color: rgba(245, 245, 245, 1);
+  border-radius: 1rem 1rem 1rem 0;
+  padding: 1rem;
+}
+
+
+.toto {
+  animation: toto 450ms;
+}
+
+@keyframes toto {
+  0% {
+    transform: scale(0%);
+  }
+  50% {
+    transform: scale(10%);
+  }
+  100% {
+    transform: scale(90%);
+    transform-origin: -50%;
+  }
+}
+
+
+@keyframes fade {
+  0% {
+    transform: opacity(0%);
+  }
+  50% {
+    transform: opacity(10%);
+  }
+  100% {
+    transform: opacity(90%);
+  }
+}
