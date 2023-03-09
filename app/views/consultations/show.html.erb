@@ -1,10 +1,5 @@
 
-<h4>Patient informations:</h4>
-<p>First Name:<%= @consultation.patient.first_name %></p>
-<p>Last name:<%= @consultation.patient.last_name %> </p>
-<p>Birth date:<%= @consultation.patient.birth_date%></p>
-<p><%= @consultation.patient.height%>cm</p>
-<p><%= @consultation.patient.weight%>kg</p>
+
 
 
 
@@ -17,24 +12,35 @@
 <div class="ecg-flex-container">
 
 
+
+
     <div class="capsuleLeft scale-up-bl">
 
+      <div class="ekg-details">
+        <h3>Patient informations:</h3>
+          <div class="ekg-list">
+            <p>First Name:<%= @consultation.patient.first_name %></p>
+            <p>Last name:<%= @consultation.patient.last_name %> </p>
+            <p>Birth date:<%= @consultation.patient.birth_date%></p>
+            <p><%= @consultation.patient.height%>cm</p>
+          </div>
+
+      </div>
 
 
-
-      <div style="animation-delay: 2s;background-color:white; border-radius:1rem;" class="fadeIn">
+      <div style="background-color:white; border-radius:1rem; padding:1rem;">
       <%= line_chart @data, min: 500, points: false %>
       </div>
 
       <div class="ekg-details">
         <h3>EKG details</h3>
-          <ul class="ekg-list">
-            <li>Criticity:<%= @consultation.diagnostic %></li>
-            <li>Interval max<%= @intervals_in_ms.max %></li>
-            <li>Interval min<%= @intervals_in_ms.min %></li>
-            <li>Delta<%= @intervals_in_ms.max - @intervals_in_ms.min %></li>
-            <li>BPM<%= 60_000 / @intervals_in_ms.max %></li>
-          </ul>
+          <div class="ekg-list">
+            <div style="animation-delay:180ms;" class="scale-up-bl">Criticity <strong><%= @consultation.diagnostic %></strong></div>
+            <div style="animation-delay:50ms;" class="scale-up-bl alerteRouge">Interval max <strong><%= @intervals_in_ms.max %></strong></div>
+            <div style="animation-delay:300ms;" class="scale-up-bl">Interval min <strong><%= @intervals_in_ms.min %></strong></div>
+            <div style="animation-delay:100ms;" class="scale-up-bl alerteVerte">Delta <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong></div>
+            <div style="animation-delay:250ms;" class="scale-up-bl">BPM <strong><%= 60_000 / @intervals_in_ms.max %></strong></div>
+          </div>
 
       </div>
 
