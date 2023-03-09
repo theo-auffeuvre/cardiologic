@@ -1,0 +1,8 @@
+<h1>My Dashboard</h1>
+
+<% @consultations.each do |consultation| %>
+<%= consultation.diagnostic %>
+<%= consultation.created_at %>
+<%= consultation.patient.first_name%>
+<%= consultation.patient.last_name%>
+<%end %>

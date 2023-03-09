@@ -7,5 +7,14 @@ import { application } from "./application"
 import ConsultationSubscriptionController from "./consultation_subscription_controller"
 application.register("consultation-subscription", ConsultationSubscriptionController)
 
+import DragDropController from "./drag_drop_controller"
+application.register("drag-drop", DragDropController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import PartialRenderingController from "./partial_rendering_controller"
+application.register("partial-rendering", PartialRenderingController)
+
+import TotoController from "./toto_controller"
+application.register("toto", TotoController)

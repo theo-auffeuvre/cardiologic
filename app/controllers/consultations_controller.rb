@@ -37,6 +37,10 @@ class ConsultationsController < ApplicationController
     @consultation.diagnostic = "rouge"
   end
 
+  def index
+    @consultations = Consultation.all
+  end
+
   private
 
   def consultation_params
