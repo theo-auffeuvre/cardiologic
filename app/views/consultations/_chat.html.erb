@@ -1,13 +1,19 @@
-<h1>Chat</h1>
+<h1>Chatroom</h1>
 <div class="messages" data-consultation-subscription-target="messages">
+
   <% @consultation.messages.each do | message | %>
-    <div id="message-<%= message.id %>">
-      <small>
-      <%= message.user_id %>
-      <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-      </small>
-      <p><%= message.content %></p>
+
+    <div class="message-row d-flex <%= message.user.cardiologist? ? 'justify-content-end' : 'justify-content-start' %>" id="message-<%= message.id %>">
+      <div class="<%= message.user.cardiologist? ? 'sender-style scale-up-br' : 'receiver-style scale-up-bl' %>">
+        <small>
+        <%= message.user_id %>
+        <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <a><%= message.content %></a>
+      </div>
     </div>
+
+
   <% end %>
 </div>
 

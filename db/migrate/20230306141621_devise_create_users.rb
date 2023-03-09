@@ -36,7 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :last_name
       t.string :address
       t.string :phone
-      t.string :speciality
+      t.integer :speciality
       t.string :doctolib_url
 
       t.timestamps null: false
