@@ -15,18 +15,13 @@ class ConsultationsController < ApplicationController
     @data_ecg = upload_convert(@mat_file)
     @data_ecg.shift
     @peeks = peeks_extractor(@data_ecg)
-    @intervals = []
-    @peeks.each_with_index do |peek, index|
-      @intervals << @peeks[index + 1][0].to_i - peek[0].to_i unless @peeks[index + 1].nil?
-    end
-    @intervals_in_ms = @intervals.map { |interval| interval*1000/360 }
+    @intervals_in_ms = get_intervals(@peeks)
     @criticity = choose_criticity(@intervals_in_ms)
     @consultation.diagnostic = @criticity
     @ecg = Ecg.new(data: @data_ecg.to_json)
     @ecg.patient = @consultation.patient
     @ecg.save!
     @consultation.save!
-    send_mail()
     redirect_to consultation_path(@consultation)
   end
 
@@ -34,11 +29,19 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:id])
     @data = JSON.parse(@consultation.patient.ecgs.last.data)
     @message = Message.new
+    @peeks = peeks_extractor(@data)
+    @peeks_QS = peeks_inverse_extractor(@data)
+    @intervals_in_ms = get_intervals(@peeks)
+    @intervals_in_ms_QS = get_intervals_QS(@peeks_QS)
     @consultation.diagnostic = "rouge"
   end
 
   def index
     @consultations = Consultation.all
+  end
+
+  def send_mail
+    ConsultationMailer.send_email(params[:mail]).deliver_later
   end
 
   private
@@ -85,6 +88,56 @@ class ConsultationsController < ApplicationController
     return @peeks
   end
 
+  def peeks_inverse_extractor(data)
+    @mins = []
+    tmp_array = []
+    inArray = false
+    data.each do |item|
+        if item[1].to_i < 942
+          if inArray == true
+            tmp_array << item
+          else
+            tmp_array << item
+            inArray = true
+          end
+        else
+          if inArray == true
+            @mins << tmp_array
+            tmp_array = []
+            inArray = false
+          end
+        end
+    end
+
+    @peeks_inverse = []
+    @mins.each do |peek_inverse|
+      @peeks_inverse << peek_inverse.min
+    end    
+
+    @peeks_QS = @peeks_inverse.each_slice(3).to_a.map { |peek_inverse| { Q: peek_inverse[0], S: peek_inverse[1] } }
+
+    return @peeks_QS
+  end
+
+  def get_intervals(peeks)
+    intervals = []
+    peeks.each_with_index do |peek, index|
+      intervals << peeks[index + 1][0].to_i - peek[0].to_i unless peeks[index + 1].nil?
+    end
+    @intervals_in_ms = intervals.map { |interval| interval*1000/360 }
+    return @intervals_in_ms
+  end
+
+  def get_intervals_QS(peeks)
+    intervals = []
+    peeks.each_with_index do |peek, index|
+      intervals << peek[:S][0].to_i - peek[:Q][0].to_i
+    end
+    @intervals_in_ms_QS = intervals.map { |interval| interval*1000/360 }
+    return @intervals_in_ms_QS
+  end
+
+
   def choose_criticity(intervals)
     if intervals.max > 2000
       "red"
@@ -93,10 +146,6 @@ class ConsultationsController < ApplicationController
     else
       "green"
     end
-  end
-
-  def send_mail
-    ConsultationMailer.send_email().deliver_later
   end
 
 end
