@@ -17,5 +17,9 @@ Rails.application.routes.draw do
 
   get "/sandwich", to: "consultations#sandwich"
   post "messages/createsandwich", to: "messages#createsandwich"
+
   get '/myprofile', to: 'users#myprofile'
+
+  post "/send_mail", to: "consultations#send_mail"
+
 end
