@@ -4,31 +4,43 @@
       <%= simple_form_for @consultation do |c| %>
         <%= c.simple_fields_for :patient do |p|%>
         <div class="container d-flex">
-          <div class= "col-4">
+          <div class= "col-4 pe-3">
             <%= p.input :first_name%>
           </div>
-          <div class= "col-4">
+          <div class= "col-4 pe-3">
             <%= p.input :last_name %>
           </div>
-          <div class= "col-4">
+          <div class= "col-4 pe-3">
             <%= p.input :birth_date, input_html: {type: "date"} %>
           </div>
         </div>
         <div class="container d-flex">
-        <div class= "col-4 mb-3">
+        <div class= "col-4 mb-3 pe-3">
           <%= p.input :height, label: 'Height(cm)' %>
         </div>
-        <div class= "col-4 mb-3">
+        <div class= "col-4 mb-3 pe-3">
           <%= p.input :weight, label: 'Weight(kg)' %>
         </div>
         </div>
         <% end %>
-        <%# <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-           <p>Drag your EKG file (.mat) <i>here</i></p>
+        <div data-controller="drag-drop">
+          <div
+            id="zone"
+            data-drag-drop-target="zone"
+            data-action="drop->drag-drop#drop dragover->drag-drop#dragover dragleave->drag-drop#dragleave">
+            Upload your EKG file (.mat)
+           <%= image_tag "arrow-down.svg", alt:"fleche", width:30 %>
+
+
+
+
+          </div>
+            <%= c.input :file, as: :file, input_html: {class: "upload-area", "data-drag-drop-target" => "input"}, label:false%>
+        <%# <div style="border-style: dashed; height: 300px;">
         </div> %>
-        <%# display none sur input et voir si drop sur label possible %>
-        <%= c.input :file, as: :file, input_html: {class: "opacity-0"}, label: "Upload your EKG file (.mat)"%>
-        <div class="d-flex justify-content-center"><%= c.button :submit, class: 'btn btn-primary'%></div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3"><%= c.button :submit, class: 'btn btn-primary'%></div>
       <% end %>
     </div>
   </div>
