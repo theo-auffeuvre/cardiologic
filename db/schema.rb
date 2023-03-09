@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_135901) do
     t.string "last_name"
     t.string "address"
     t.string "phone"
-    t.integer "speciality"
+    t.string "speciality"
     t.string "doctolib_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
