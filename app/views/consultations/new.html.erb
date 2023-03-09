@@ -26,14 +26,8 @@
         <%# <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
            <p>Drag your EKG file (.mat) <i>here</i></p>
         </div> %>
-      <!-- <div class="zone">
-          <% <label for="inputTag">
-    Select Image
-    <input id="inputTag" type="file"/>
-  </label> %>
-
-      </div> -->
-        <%= c.input :file, as: :file, input_html: {class: "upload-area"}, label: false%>
+        <%# display none sur input et voir si drop sur label possible %>
+        <%= c.input :file, as: :file, input_html: {class: "opacity-0"}, label: "Upload your EKG file (.mat)"%>
         <div class="d-flex justify-content-center"><%= c.button :submit, class: 'btn btn-primary'%></div>
       <% end %>
     </div>

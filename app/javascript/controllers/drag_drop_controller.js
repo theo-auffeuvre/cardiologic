@@ -31,10 +31,10 @@ export default class extends Controller {
     }
   }
 
-// dragOverHandler(ev) {
-//     console.log("File(s) in drop zone");
+dragOverHandler(ev) {
+    console.log("File(s) in drop zone");
 
-//     // Prevent default behavior (Prevent file from being opened)
-//     ev.preventDefault();
-//   }
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+  }
 }
