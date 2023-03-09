@@ -1,9 +1,19 @@
-<h1>Chatroom</h1>
 <div class="messages" data-consultation-subscription-target="messages">
+    <div class="message-row d-flex flex-column justify-content-start">
+      <div class="receiver-head scale-up-br">
+      <img class="avatar" src="https://kitt.lewagon.com/placeholder/users/ssaunier">
+        <div>
+          <p>Dr Vanessa Heart</p>
+          <p>Cardiologue</p>
+        </div>
+      </div>
+    </div>
+
 
   <% @consultation.messages.each do | message | %>
 
     <div class="message-row d-flex flex-column <%= message.user.cardiologist? ? 'justify-content-end' : 'justify-content-start' %>" id="message-<%= message.id %>">
+
       <div class="<%= message.user.cardiologist? ? 'sender-style scale-up-br' : 'receiver-style scale-up-bl' %>">
         <small>
         <%= message.user_id %>
@@ -12,9 +22,8 @@
         <a><%= message.content %></a>
       </div>
     </div>
-
-
   <% end %>
+
 </div>
 
 <div>
@@ -28,5 +37,9 @@
 
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
+  <div>
+    <div class="champ">champ texte</div>
+    <div class="send-bt"><%= image_tag "send-bt.svg", alt: "Le Wagon", width: 200 %></div>
+  </div>
 
 </div>
