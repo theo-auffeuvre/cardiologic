@@ -1,0 +1,30 @@
+
+.ekg-details {
+
+  display: flex;
+  flex-flow: column wrap;
+
+  border:1px $sombre solid;
+  margin-top: 3rem;
+
+}
+
+
+.ekg-list  {
+  margin: 0 1rem;
+  margin: 0 auto;
+  color: $sombre;
+
+  border: solid 1px blueviolet;
+
+}
+
+.ekg-list li {
+  display:inline-block;
+
+  color: $sombre;
+  list-style-type: none;
+  border: solid 1px blueviolet;
+
+
+}
