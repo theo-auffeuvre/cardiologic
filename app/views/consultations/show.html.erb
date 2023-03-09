@@ -1,33 +1,10 @@
 
 
 
-<%# <div class="row">
 
 
 
-
-
-<%
-=begin%>
- <div class="row">
-
-  <div data-controller="partial-rendering">
-    <button data-action="click->partial-rendering#show">ACTION</button>
-    <div data-partial-rendering-target="results">resultat</div>
-        <div class="d-none scale-up-br" data-partial-rendering-target="enveloppe"><%= render "enveloppe" %></div>
-
-  <%# </div>
-</div>
-
-<% end %>
-
-
-<% end %> 
-<%
-=end%>
-
-
-<div class="ecg-flex-container" style="justify-content:start; margin-bottom:3rem;">
+<div class="ecg-flex-container" style="margin-bottom:3rem;">
     <h1>Résultat de l'analyse</h1>
 </div>
 <div class="ecg-flex-container">
@@ -35,9 +12,26 @@
 
     <div class="capsuleLeft scale-up-bl">
 
+
+
+
       <div style="animation-delay: 2s;background-color:white; border-radius:1rem;" class="fadeIn">
       <%= line_chart @data, min: 500, points: false %>
       </div>
+
+      <div class="ekg-details">
+        <h3>EKG details</h3>
+          <ul class="ekg-list">
+            <li>Criticity:<%= @consultation.diagnostic %></li>
+            <li>Interval max<%= @intervals_in_ms.max %></li>
+            <li>Interval min<%= @intervals_in_ms.min %></li>
+            <li>Delta<%= @intervals_in_ms.max - @intervals_in_ms.min %></li>
+            <li>BPM<%= 60_000 / @intervals_in_ms.max %></li>
+          </ul>
+
+      </div>
+
+
     </div>
 
     <div class="capsuleRight scale-up-br">
@@ -52,11 +46,7 @@
     </div>
 
 
-<%= form_with url: send_mail_path do |form| %>
-  <%= form.label :mail, "Email:" %>
-  <%= form.text_field :mail %>
-  <%= form.submit "Send" %>
-<% end %>
+
 
 
 
@@ -64,14 +54,8 @@
 
 </div> <!-- end ecg flex container -->
 
-      <div>Criticity:<%= @consultation.diagnostic %></div>
-      <div>Interval max<%= @intervals_in_ms.max %></div>
-      <div>Interval min<%= @intervals_in_ms.min %></div>
-      <div>Delta<%= @intervals_in_ms.max - @intervals_in_ms.min %></div>
-      <div>BPM<%= 60_000 / @intervals_in_ms.max %></div>
-      <%
-=begin%>
- <div>QRS moyen<%= @intervals_in_ms_QS.sum / @intervals_in_ms_QS.count %></div>
-      <div>QRS moyen<%= @intervals_in_ms_QS %></div> 
-<%
-=end%>
+<%= form_with url: send_mail_path do |form| %>
+  <%= form.label :mail, "Email:" %>
+  <%= form.text_field :mail %>
+  <%= form.submit "Send" %>
+<% end %>
