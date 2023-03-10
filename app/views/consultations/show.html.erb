@@ -46,18 +46,38 @@
 
 
     </div>
-
-    <div class="capsuleRight scale-up-br">
+    <% if @consultation.diagnostic == "red" %>
+      <div class="capsuleRight scale-up-br">
       <%#= @consultation.diagnostic %>
-      <% if @consultation.diagnostic == "rouge" %>
-      <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
-        <%= render "chat" %>
+        <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
+          <%= render "chat" %>
       </div>
-      <% end %>
-      <%= render "enveloppe" %>
+    <% elsif @consultation.diagnostic == "orange" %>
+      <div class="capsuleRight scale-up-br">
+      <%#= @consultation.diagnostic %>
+        <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
+          <%= render "enveloppe" %>
+          <%= form_with url: send_mail_path do |form| %>
+            <%= form.label :mail, "Email:" %>
+            <%= form.text_field :mail %>
+            <%= form.submit "Send" %>
+          <% end %>
+
+          <div data-controller="search-cardio">
+            <%= form_with url: consultation_search_cardio_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
+              <%= form.label :place, "Place:" %>
+              <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"} %>
+              <%= form.submit "Send", data: {action: "click->search-cardio#update"} %>
+            <% end %>
+
+            <div><%= render 'cardiologists' %></div>
+          </div>
+      </div>
+    <% end %>
+        
 
 
-    </div>
+  </div>
 
 
 
@@ -68,8 +88,12 @@
 
 </div> <!-- end ecg flex container -->
 
-<%= form_with url: send_mail_path do |form| %>
-  <%= form.label :mail, "Email:" %>
-  <%= form.text_field :mail %>
-  <%= form.submit "Send" %>
-<% end %>
+
+
+  <%
+=begin%>
+ <%= render 'cardiologists' %> 
+<%
+=end%>
+
+

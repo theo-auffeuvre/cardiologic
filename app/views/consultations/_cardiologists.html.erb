@@ -1,0 +1,10 @@
+ <div data-search-cardio-target="list">
+  <% @cardiologists&.each do |cardiologist| %>
+    <div><%= cardiologist["Libellé civilité d'exercice"] %> <%= cardiologist["Nom d'exercice"] %> <%= cardiologist["Prénom d'exercice"] %>: <%= cardiologist["Téléphone"] %></div>
+    <span><%= cardiologist["Numéro Voie"] %> <%= cardiologist["Libellé Voie"] %> <%= cardiologist["Code Postal"] %> <%= cardiologist["Libellé commune"] %></span>
+    <p>----------------------------------------------------</p>
+  <% end %>
+ </div>
+
+
+  
