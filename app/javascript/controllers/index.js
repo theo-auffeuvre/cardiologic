@@ -16,5 +16,8 @@ application.register("hello", HelloController)
 import PartialRenderingController from "./partial_rendering_controller"
 application.register("partial-rendering", PartialRenderingController)
 
+import SearchCardioController from "./search_cardio_controller"
+application.register("search-cardio", SearchCardioController)
+
 import TotoController from "./toto_controller"
 application.register("toto", TotoController)
