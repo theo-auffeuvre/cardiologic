@@ -1,0 +1,2 @@
+class Cardiologist < ApplicationRecord
+end
