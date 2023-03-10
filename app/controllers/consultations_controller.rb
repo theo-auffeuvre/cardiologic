@@ -30,10 +30,11 @@ class ConsultationsController < ApplicationController
     @data = JSON.parse(@consultation.patient.ecgs.last.data)
     @message = Message.new
     @peeks = peeks_extractor(@data)
-    @peeks_QS = peeks_inverse_extractor(@data)
+    
+    # @peeks_QS = peeks_inverse_extractor(@data)
     @intervals_in_ms = get_intervals(@peeks)
-    @intervals_in_ms_QS = get_intervals_QS(@peeks_QS)
-    @consultation.diagnostic = "rouge"
+    # raise
+    # @intervals_in_ms_QS = get_intervals_QS(@peeks_QS)
   end
 
   def index
@@ -42,6 +43,18 @@ class ConsultationsController < ApplicationController
 
   def send_mail
     ConsultationMailer.send_email(params[:mail]).deliver_later
+  end
+
+  def search_cardio
+    @consultation = Consultation.find(params[:consultation_id])
+    @cardiologists = Cardiologist.where("Libellé commune": params[:place] )
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "cardiologists", locals: {cardiologists: @cardiologists}, formats: [:html] }
+    end
+    
+    # raise 
+    # redirect_to consultation_path(@consultation)
   end
 
   private
@@ -83,8 +96,9 @@ class ConsultationsController < ApplicationController
 
     @peeks = []
     @maxs.each do |peek|
-      @peeks << peek.max
+      @peeks << peek.max_by{|k| k[1] }
     end
+    
     return @peeks
   end
 
@@ -124,6 +138,7 @@ class ConsultationsController < ApplicationController
     peeks.each_with_index do |peek, index|
       intervals << peeks[index + 1][0].to_i - peek[0].to_i unless peeks[index + 1].nil?
     end
+
     @intervals_in_ms = intervals.map { |interval| interval*1000/360 }
     return @intervals_in_ms
   end
@@ -141,7 +156,9 @@ class ConsultationsController < ApplicationController
   def choose_criticity(intervals)
     if intervals.max > 2000
       "red"
-    elsif (intervals.sort[-2] - intervals.sort[1]) > 500
+    elsif intervals.max < 500
+      "red"
+    elsif (intervals.max - intervals.min) > 446
       "orange"
     else
       "green"

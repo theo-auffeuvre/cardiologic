@@ -10,13 +10,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :consultations, only: %i[new create show index] do
+  resources :consultations, only: %i[new create show index search_cardio] do
     resources :users, only: %i[new create]
     resources :messages, only: :create
+    get "/search_cardio", to: "consultations#search_cardio"
   end
 
   get "/sandwich", to: "consultations#sandwich"
   post "messages/createsandwich", to: "messages#createsandwich"
+
+  
+  
 
   get '/myprofile', to: 'users#myprofile'
 

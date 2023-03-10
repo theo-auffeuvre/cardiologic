@@ -34,12 +34,8 @@
       label: false,
       wrapper_html: {class: "flex-grow-1"}
     %>
-
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <%= f.submit "Send", type: :image, src: "#{image_path 'send-bt.svg'}", height: 40 %>
   <% end %>
   <div>
-    <div class="champ">champ texte</div>
-    <div class="send-bt"><%= image_tag "send-bt.svg", alt: "Le Wagon", width: 200 %></div>
-  </div>
 
 </div>
