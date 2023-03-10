@@ -7,7 +7,7 @@
 
 <div class="ecg-flex-container" style="margin-bottom:3rem;">
 
-    <h1>Résultat de l'analyse</h1>
+    <h1>Analysis results</h1>
 </div>
 <div class="ecg-flex-container">
 
@@ -49,7 +49,7 @@
 
     <div class="capsuleRight scale-up-br">
       <%#= @consultation.diagnostic %>
-      <% if @consultation.diagnostic == "rouge" %>
+      <% if @consultation.diagnostic == "red" %>
       <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
         <%= render "chat" %>
       </div>

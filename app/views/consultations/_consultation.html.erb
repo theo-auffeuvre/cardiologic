@@ -1,0 +1,17 @@
+<div class="card-consultation mb-3 ms-4 d-flex" style="display: flex;  border: solid blue 1px; border-radius: 5px;">
+  <%# <div class="g"> %>
+    <div style="border:solid red 1px;">
+      <%= consultation.created_at.strftime("%Y-%m-%d") %>
+    </div>
+    <div style="border:solid red 1px; margin-left: 50px;">
+    <h3>
+        <%= consultation.patient.first_name%>
+        <%= consultation.patient.last_name%>
+      </h3>
+        <p>Diagnostic: <%= consultation.diagnostic =="green"  %></p>
+    </div>
+    <div style="border:solid red 1px; margin-left: 50px;">
+      <%= link_to "Details", consultation_path(consultation)%>
+    </div>
+  <%# </div> %>
+</div>

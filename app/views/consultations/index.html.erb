@@ -1,8 +1,10 @@
-<h1>My Dashboard</h1>
+<h1>My analyses</h1>
 
-<% @consultations.each do |consultation| %>
-<%= consultation.diagnostic %>
-<%= consultation.created_at %>
-<%= consultation.patient.first_name%>
-<%= consultation.patient.last_name%>
+<%  @consultations.each do |consultation| %>
+  <%= render "consultation", consultation: consultation%>
+<%#= consultation.diagnostic %>
+<%#= consultation.created_at.strftime("%Y-%m-%d") %>
+<%#= consultation.patient.first_name%>
+<%#= consultation.patient.last_name%>
+<%#= link_to "a", consultation_path(consultation) %>
 <%end %>
