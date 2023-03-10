@@ -8,16 +8,10 @@ class ConsultationMailer < ApplicationMailer
       text "Hello World!"
     end
 
-    # attachment = SendGrid::Attachment.new
-    # attachment.content = 'BwdW'
-    # attachment.type = 'application/pdf'
-    # attachment.filename = 'printable.pdf'
-    # attachment.disposition = 'inline'
-    # attachment.content_id = 'printable'
     attachments['printable.pdf'] = File.read("./printable.pdf")
-
 
     mail( to: mail_address,
     subject: 'Thanks for nothing!')
+    File.delete("./printable.pdf")
   end
 end
