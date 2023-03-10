@@ -48,13 +48,9 @@
     </div>
     <% if @consultation.diagnostic == "red" %>
       <div class="capsuleRight scale-up-br">
-      <%#= @consultation.diagnostic %>
-
-      <% if @consultation.diagnostic == "red" %>
-      <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
+        <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
         <%= render "chat" %>
-
-      </div>
+        </div>
     <% elsif @consultation.diagnostic == "orange" %>
       <div class="capsuleRight scale-up-br">
       <%#= @consultation.diagnostic %>
@@ -77,8 +73,7 @@
           </div>
       </div>
     <% end %>
-        
-
+      
 
   </div>
 
@@ -90,13 +85,4 @@
 
 
 </div> <!-- end ecg flex container -->
-
-
-
-  <%
-=begin%>
- <%= render 'cardiologists' %> 
-<%
-=end%>
-
 
