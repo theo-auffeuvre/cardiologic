@@ -33,8 +33,12 @@ class ConsultationsController < ApplicationController
     
     # @peeks_QS = peeks_inverse_extractor(@data)
     @intervals_in_ms = get_intervals(@peeks)
+
+
+
     # raise
     # @intervals_in_ms_QS = get_intervals_QS(@peeks_QS)
+
   end
 
   def index
@@ -126,7 +130,7 @@ class ConsultationsController < ApplicationController
     @peeks_inverse = []
     @mins.each do |peek_inverse|
       @peeks_inverse << peek_inverse.min
-    end    
+    end
 
     @peeks_QS = @peeks_inverse.each_slice(3).to_a.map { |peek_inverse| { Q: peek_inverse[0], S: peek_inverse[1] } }
 
