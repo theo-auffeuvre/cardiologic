@@ -12,6 +12,7 @@ module Cardiologic
       generate.assets false
       generate.helper false
       generate.test_framework :test_unit, fixture: false
+
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
@@ -23,5 +24,7 @@ module Cardiologic
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.assets.enabled = true
+    config.assets.paths << Rails.root.join("app", "assets", "plugins", "bootstrap","css")
   end
 end
