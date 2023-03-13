@@ -11,7 +11,9 @@ export default class extends Controller {
   }
   update(event) {
     event.preventDefault()
-    const url = `${this.formTarget.action}?place=${this.inputTarget.value}`
+    console.log('update');
+    const url = `${this.formTarget.action}?place=${this.inputTarget.value}`;
+    console.log(url)
     fetch(url, {headers: {"Accept": "text/plain"}})
       .then(response => response.text())
       .then((data) => {
