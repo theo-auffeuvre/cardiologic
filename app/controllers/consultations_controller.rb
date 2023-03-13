@@ -53,7 +53,7 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:consultation_id])
     @cardiologists = Cardiologist.where("Libellé commune": params[:place] )
     respond_to do |format|
-      format.html # Follow regular flow of Rails
+      format.html
       format.text { render partial: "cardiologists", locals: {cardiologists: @cardiologists}, formats: [:html] }
     end
     
