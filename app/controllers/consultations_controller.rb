@@ -30,7 +30,7 @@ class ConsultationsController < ApplicationController
     @data = JSON.parse(@consultation.patient.ecgs.last.data)
     @message = Message.new
     @peeks = peeks_extractor(@data)
-    
+
     # @peeks_QS = peeks_inverse_extractor(@data)
     @intervals_in_ms = get_intervals(@peeks)
 
@@ -99,7 +99,7 @@ class ConsultationsController < ApplicationController
     @maxs.each do |peek|
       @peeks << peek.max_by{|k| k[1] }
     end
-    
+
     return @peeks
   end
 
