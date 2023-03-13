@@ -57,29 +57,49 @@
 
 
     <% if @consultation.diagnostic == "red" %>
+
             <div class="alerte rouge">
             <span class="exclamation">!</span><p> WARNING : This EKG has abnormal high frequency. <br>A cardiologist will contact you.  </p>
           </div>
     </div>
-      <div class="capsuleRight scale-up-br">
+    <div class="capsuleRight scale-up-br">
         <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
         <%= render "chat" %>
         </div>
 
     <% elsif @consultation.diagnostic == "orange" %>
+
+      <div class="capsuleRightOrange scale-up-br d-flex align-items-end flex-column">
+
               <div class="alerte orange">
             <span class="exclamation">!</span><p> WARNING : This EKG has irregular frequency.A checkup with a specialist is recommended.  </p>
           </div>
           </div>
       <div class="capsuleRight scale-up-br">
+
       <%#= @consultation.diagnostic %>
-        <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
-          <%= render "enveloppe" %>
+        <div data-controller="search-cardio" class="w-100" >
+          <%= form_with url: consultation_search_cardio_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
+            <%= form.label :place, "Location:" %>
+            <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"} %>
+            <%= form.submit "Send", value: 1, data: {action: "click->search-cardio#update"} %>
+          <% end %>
+          <div><%= render 'consultations/cardiologists' %></div>
+          <a data-search-cardio-target="pagenumber" data-action="click->search-cardio#update" value="1">Next</a>
+        </div>
+        <div class="w-100  mt-auto" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
           <%= form_with url: send_mail_path do |form| %>
             <%= form.label :mail, "Email:" %>
             <%= form.text_field :mail %>
             <%= form.submit "Send" %>
+            
           <% end %>
+
+        </div>
+      </div>
+    <% end %>
+      
+<%= render "enveloppe" %>
 
           <div data-controller="search-cardio">
             <%= form_with url: consultation_search_cardio_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
@@ -97,7 +117,6 @@
           <div class="alerte verte">
             <span class="exclamation">!</span><p> This EKG does not show any issues.</p>
           </div>
-
 
   </div>
     <% end %>

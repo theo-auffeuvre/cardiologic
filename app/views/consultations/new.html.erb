@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mt-5 capsuleLeft">
   <div class="row justify-content-center">
-    <div class ="col-6">
-      <%= simple_form_for @consultation do |c| %>
+    <div class ="col-6" id="form-analysis">
+        <%=simple_form_for @consultation do |c| %>
         <%= c.simple_fields_for :patient do |p|%>
         <div class="container d-flex">
           <div class= "col-4 pe-3">

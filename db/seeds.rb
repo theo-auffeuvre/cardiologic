@@ -12,13 +12,13 @@ User.destroy_all
 puts "Creating users..."
 
 User.create!(
-  first_name: 'John',
-  last_name: 'Attend',
+  first_name: 'Olivia',
+  last_name: 'Bobo',
   address:'55 Rue Vendôme 69006 Lyon',
   phone:'0403890657',
   speciality: 1,
   doctolib_url: 'doctolib.fr/cardiologue/lyon/marc-ferrini',
-  email: 'j.attend@mail.com',
+  email: 'generaliste@mail.com',
   password: '123456'
 )
 

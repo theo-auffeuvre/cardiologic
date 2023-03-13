@@ -110,7 +110,7 @@ form{padding:5px;
   justify-content:start
 }
 
-.capsuleLeft, .capsuleRight {
+.capsuleLeft, .capsuleRight, .capsuleRightOrange {
   border-radius: 1rem 1rem 1rem 1rem;
   padding: 1rem;
   overflow: hidden;
@@ -126,6 +126,14 @@ form{padding:5px;
   width: 33%;
 
 }
+
+.capsuleRightOrange {
+  background-color: rgba(245, 245, 245, 1);
+  width: 33%;
+
+}
+
+
 
 
 
