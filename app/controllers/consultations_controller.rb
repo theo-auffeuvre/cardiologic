@@ -51,14 +51,11 @@ class ConsultationsController < ApplicationController
 
   def search_cardio
     @consultation = Consultation.find(params[:consultation_id])
-    @cardiologists = Cardiologist.where("Libellé commune": params[:place] )
+    @cardiologists = Cardiologist.where("Libellé commune": params[:place] ).first(params[:page].to_i*5)
     respond_to do |format|
       format.html
-      format.text { render partial: "cardiologists", locals: {cardiologists: @cardiologists}, formats: [:html] }
+      format.text { render partial: "consultations/cardiologists", locals: {cardiologists: @cardiologists}, formats: [:html] }
     end
-    
-    # raise 
-    # redirect_to consultation_path(@consultation)
   end
 
   private
