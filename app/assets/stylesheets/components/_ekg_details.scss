@@ -4,7 +4,7 @@
   // display: flex;
   // flex-flow: column wrap;
 
-  margin-top: 3rem;
+  margin-top: 1rem;
 
 }
 .ekg-details h2 {
@@ -40,7 +40,9 @@
   flex:auto;
 }
 
-.ekg-list div.splitVertical {
+
+
+.ekg-list div.splitVertical, .ekg-list p.splitVertical  {
   // border: 1px solid red;
   // gap: $border-radius;
   display: flex;
@@ -109,22 +111,32 @@ line-height:1rem;
   color: $greenDark;
 }
 
-
+.ekg-list p {
+}
 .ekg-list ul {
   display: flex;
-  justify-content: space-between; ;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: space-between;
   gap: 1em 0.5em;
   // width: 100%;
   margin: 0;
-  padding: 0;
+  margin-bottom: 3rem;
 }
 .ekg-list li {
   // display:inline-block;
   list-style-position: -10rem;
+  width: 24%;
   list-style-type: none;
+  border-left: 1px solid $gray30;
 
-  color: $redDark;
+
+  color: $gray;
   padding: 1rem;
+  // border: 1px solid red;
 
 
+}
+.ekg-list li:first-child {
+  border-left: none;
 }
