@@ -8,9 +8,9 @@
 
 
 <div class="ecg-flex-container" style="margin-bottom:3rem;">
-
     <h1>Analysis results</h1>
 </div>
+
 <div class="ecg-flex-container">
 
 
@@ -19,7 +19,7 @@
     <div class="capsuleLeft scale-up-bl">
 
       <div class="ekg-details">
-        <h3>Patient informationss:</h3>
+        <h3>Patient informations:</h3>
           <div class="ekg-list">
             <p>First Name:<%= @consultation.patient.first_name %></p>
             <p>Last name:<%= @consultation.patient.last_name %> </p>
@@ -35,7 +35,6 @@
       </div>
 
       <div class="ekg-details">
-        <h3>EKG details</h3>
           <div class="ekg-list">
             <div style="animation-delay:180ms;" class="scale-up-bl">Criticity <strong><%= @consultation.diagnostic %></strong></div>
             <div style="animation-delay:50ms;" class="scale-up-bl alerteRouge">Interval max <strong><%= @intervals_in_ms.max %></strong></div>
@@ -44,16 +43,27 @@
             <div style="animation-delay:250ms;" class="scale-up-bl">BPM <strong><%= 60_000 / @intervals_in_ms.max %></strong></div>
           </div>
 
+
+
+
       </div>
 
 
-    </div>
     <% if @consultation.diagnostic == "red" %>
+            <div class="alerte rouge">
+            <span class="exclamation">!</span><p> WARNING : This EKG has abnormal high frequency. <br>A cardiologist will contact you.  </p>
+          </div>
+    </div>
       <div class="capsuleRight scale-up-br">
         <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
         <%= render "chat" %>
         </div>
+
     <% elsif @consultation.diagnostic == "orange" %>
+              <div class="alerte orange">
+            <span class="exclamation">!</span><p> WARNING : This EKG has irregular frequency.A checkup with a specialist is recommended.  </p>
+          </div>
+          </div>
       <div class="capsuleRight scale-up-br">
       <%#= @consultation.diagnostic %>
         <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
@@ -70,14 +80,20 @@
               <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"} %>
               <%= form.submit "Send", data: {action: "click->search-cardio#update"} %>
             <% end %>
+            </div>
 
             <div><%= render 'cardiologists' %></div>
           </div>
       </div>
-    <% end %>
-      
+    <% else %>
+
+          <div class="alerte verte">
+            <span class="exclamation">!</span><p> This EKG does not show any issues.</p>
+          </div>
+
 
   </div>
+    <% end %>
 
 
 
@@ -87,4 +103,3 @@
 
 
 </div> <!-- end ecg flex container -->
-
