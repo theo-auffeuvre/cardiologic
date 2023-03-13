@@ -16,6 +16,9 @@ application.register("drag-drop", DragDropController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import LoadingAnimationController from "./loading_animation_controller"
+application.register("loading-animation", LoadingAnimationController)
+
 import PartialRenderingController from "./partial_rendering_controller"
 application.register("partial-rendering", PartialRenderingController)
 
