@@ -39,18 +39,22 @@
             </div>
           </div>
       </div>
+
       <% if @consultation.diagnostic == "red" %>
       <div class="alerte rouge">
         <span class="exclamation">!</span><p> WARNING : This EKG has abnormal high frequency. <br>A cardiologist will contact you.  </p>
       </div>
     </div>
+    
 <!--- CAPSULE RIGHT --->
     <div class="capsuleRight scale-up-br">
         <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
           <%= render "chat" %>
         </div>
     </div>
+
     <% elsif @consultation.diagnostic == "orange" %>
+
       <div class="alerte orange">
         <span class="exclamation">!</span><p> WARNING : This EKG has irregular frequency.A checkup with a specialist is recommended.  </p>
       </div>
