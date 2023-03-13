@@ -1,10 +1,11 @@
-<h1>Assess a new analysis</h1>
+<h1>Submit a new analysis</h1>
 <div class="container mt-5" data-controller="loading-animation">
   <div data-loading-animation-target="divgif" class="d-none d-flex justify-content-center">
     <%= image_tag "loading-ecg.gif" %>
   </div>
   <div class="row justify-content-center" data-loading-animation-target="divglobale">
-    <div class ="col-6" id="form-analysis">
+  <h5>Patient informations :</h5>
+    <div class ="col-8" id="form-analysis">
         <%= simple_form_for @consultation, data: { action: "submit->loading-animation#animation" } do |c| %>
         <%= c.simple_fields_for :patient do |p|%>
         <div class="container d-flex">
@@ -32,8 +33,10 @@
             id="zone"
             data-drag-drop-target="zone"
             data-action="drop->drag-drop#drop dragover->drag-drop#dragover dragleave->drag-drop#dragleave click->drag-drop#onDropZoneClick" >
-            Drag and drop your EKG file (.mat) or click
-           <%= image_tag "arrow-down.svg", alt:"fleche", width:30 %>
+            <div style="flex-direction: column; justify-content: center;">
+              <div style="text-align: center;">Drag and drop your EKG file (.mat) <br> or click </div>
+              <div style="padding-left: 115px;"><%= image_tag "arrow-down.svg", alt:"fleche", width:30 %></div>
+            </div>
           </div>
             <%= c.input :file, as: :file, input_html: {class: "upload-area", "data-drag-drop-target" => "input", "data-action"=>"change->drag-drop#onInputChange"}, label:false%>
         </div>
