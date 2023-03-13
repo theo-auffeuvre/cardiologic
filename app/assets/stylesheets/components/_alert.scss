@@ -1,6 +1,41 @@
-.alert {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
+// .alert {
+//   position: fixed;
+//   bottom: 16px;
+//   right: 16px;
+//   z-index: 1000;
+// }
+.alerte {
+  border-radius: $border-radius;
+  padding: 2rem $border-radius;
+  margin: $border-radius 0;
+  color: white;
+  display: flex;
+
+
+
+}
+.alerte p {margin-left:1rem;}
+
+
+.alerte.orange {
+  background-color: $orange;
+}
+.alerte.rouge {
+  background-color: $red;
+}
+
+.alerte.verte {
+  background-color: $green;
+}
+.exclamation {
+  display: inline-block;
+
+  mix-blend-mode: overlay;
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 100%;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  width: 2rem;
+  height: 2rem;
 }

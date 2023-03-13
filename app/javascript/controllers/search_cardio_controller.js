@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="search-cardio"
 export default class extends Controller {
-  static targets = ["form", "input", "list"]
+  static targets = ["form", "input", "list", "pagenumber"]
   connect() {
     console.log("connecté au controlleur search")
     console.log(this.formTarget)
@@ -11,13 +11,15 @@ export default class extends Controller {
   }
   update(event) {
     event.preventDefault()
-    console.log('update');
-    const url = `${this.formTarget.action}?place=${this.inputTarget.value}`;
-    console.log(url)
+    const url = `${this.formTarget.action}?page=1&place=${this.inputTarget.value}`;
     fetch(url, {headers: {"Accept": "text/plain"}})
       .then(response => response.text())
       .then((data) => {
         this.listTarget.outerHTML = data
       })
+  }
+
+  selectcardio(){
+    console.log(this.element.value)
   }
 }
