@@ -21,33 +21,89 @@
 
 .ekg-list  {
 
-  border-top: 1px solid rgba($color: #000000, $alpha: 0.2);
+  // border-top: 1px solid rgba($color: #000000, $alpha: 0.2);
   color: $redDark;
   display: flex; /* or inline-flex */
   flex-flow: row wrap;
 
-  gap: 0.5rem 1rem; /* row-gap column gap */
+  gap: 1rem; /* row-gap column gap */
   padding-top: 0.5rem;
 
 }
 
 .ekg-list div {
 
-  width: 13rem;
-  background-color: $orange;
+  // width: 13rem;
+  // background-color: $orange;
   color: white;
   border-radius: 1rem;
-  padding: 0.1rem 1rem;
+  flex:auto;
+}
 
-
-
+.ekg-list div.splitVertical {
+  // border: 1px solid red;
+  // gap: $border-radius;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
 }
+
+.ekg-list div.bpm {
+  background-color:$redDark;
+  text-align: center;
+}
+
+.ekg-list div.bpm strong {
+  font-size: 4rem;
+  font-weight: 100;
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+
+.ekg-list div.bpm p {
+  margin-top: 0;
+}
+
+.ekg-list div.bpm img {
+  color: #000000;
+  margin: 1rem auto;
+}
+
+.ekg-list div.interval{
+  display: flex;
+  text-align: right;
+  height: 50%;
+  padding: $border-radius;
+  justify-content: space-around;
+
+}
+.ekg-list div.interval strong {
+  margin:0;
+  display: block;
+  font-weight: 100;
+  text-align: right;
+  font-size: 3rem;
+}
+.ekg-list div.interval p {
+margin: 0;
+line-height:1rem;
+}
+
+
 .ekg-list div.alerteRouge{
   background-color: $redDark;
   animation-name: rubberBand;
   animation-delay: 3s;
 }
+
+
+.ekg-list div.alerteOrange{
+  background-color: $orange;
+  animation-name: rubberBand;
+  animation-delay: 3s;
+}
+
 .ekg-list div.alerteVerte{
   background-color: $green;
   color: $greenDark;

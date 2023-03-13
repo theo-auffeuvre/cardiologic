@@ -36,11 +36,18 @@
 
       <div class="ekg-details">
           <div class="ekg-list">
-            <div style="animation-delay:180ms;" class="scale-up-bl">Criticity <strong><%= @consultation.diagnostic %></strong></div>
-            <div style="animation-delay:50ms;" class="scale-up-bl alerteRouge">Interval max <strong><%= @intervals_in_ms.max %></strong></div>
-            <div style="animation-delay:300ms;" class="scale-up-bl">Interval min <strong><%= @intervals_in_ms.min %></strong></div>
-            <div style="animation-delay:100ms;" class="scale-up-bl alerteVerte">Delta <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong></div>
-            <div style="animation-delay:250ms;" class="scale-up-bl">BPM <strong><%= 60_000 / @intervals_in_ms.max %></strong></div>
+            <div style="animation-delay:0ms;" class="scale-up-bl bpm"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
+            <%= image_tag "courb.svg", alt: "courbe", width: 100 %></div>
+            <div class="splitVertical">
+              <div style="animation-delay:500ms;" class="scale-up-bl interval alerteRouge">
+              <strong><%= @intervals_in_ms.max %></strong><p>Interval</br> max</p></div>
+              <div style="animation-delay:600ms;" class="scale-up-bl interval alerteOrange">
+              <strong><%= @intervals_in_ms.min %></strong><p>Interval</br>min </p></div>
+            </div>
+            <div class="splitVertical">
+              <div style="animation-delay:700ms;" class="scale-up-bl interval alerteVerte"><strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong><p>Delta ▲△</p></div>
+              <div style="animation-delay:800ms;" class="scale-up-bl interval alerteVerte"><strong>FA</strong><p>Type</p></div>
+            </div>
           </div>
 
 
