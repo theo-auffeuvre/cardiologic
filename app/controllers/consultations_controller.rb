@@ -34,11 +34,6 @@ class ConsultationsController < ApplicationController
     # @peeks_QS = peeks_inverse_extractor(@data)
     @intervals_in_ms = get_intervals(@peeks)
 
-
-
-    # raise
-    # @intervals_in_ms_QS = get_intervals_QS(@peeks_QS)
-
   end
 
   def index
@@ -50,8 +45,13 @@ class ConsultationsController < ApplicationController
   end
 
   def search_cardio
+
     @consultation = Consultation.find(params[:consultation_id])
-    @cardiologists = Cardiologist.where("Libellé commune": params[:place] ).first(params[:page].to_i*5)
+    myplace = "#{params[:place]}"
+    @cardiologists = Cardiologist.near(myplace, 2, units: :km).first(5)
+    @cardiologists.map do |cardio|
+      cardio.attributes
+    end
     respond_to do |format|
       format.html
       format.text { render partial: "consultations/cardiologists", locals: {cardiologists: @cardiologists}, formats: [:html] }
@@ -65,7 +65,6 @@ class ConsultationsController < ApplicationController
   end
 
   def upload_convert(mat_file)
-    p mat_file
     system("python3 app/python/converter.py '#{mat_file}'")
     array = []
     CSV.foreach('test.csv') do |line|

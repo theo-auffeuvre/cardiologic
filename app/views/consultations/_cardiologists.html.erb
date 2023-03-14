@@ -1,10 +1,10 @@
  <div data-search-cardio-target="list">
 <!-- bg-white my-2 py-2 px-1 rounded form-label -->
   <% @cardiologists&.each do |cardiologist| %>
-    <div class="search-form-cardio" data-action="click->search-cardio#selectcardio" value="<%= cardiologist["Prénom d'exercice"] %>_<%= cardiologist["Nom d'exercice"] %>">
+    <div class="search-form-cardio" data-action="click->search-cardio#selectcardio" data-search-cardio-target="cardio" data-search-cardio-url-value="https://www.doctolib.fr/cardiologue/lyon/<%= cardiologist["Prénom d'exercice"].downcase %>-<%= cardiologist["Nom d'exercice"].downcase %>">
       <div><p><%= cardiologist["Libellé civilité d'exercice"] %></p></div>
       <div><p><%= cardiologist["Nom d'exercice"] %> <%= cardiologist["Prénom d'exercice"] %></p>
-      <p class="txt-min"><%= cardiologist["Numéro Voie"] %> <%= cardiologist["Libellé Voie"] %> <%= cardiologist["Code Postal"] %> <%= cardiologist["Libellé commune"] %></p></div>
+      <p class="txt-min"><%= cardiologist["Numéro Voie"] %> <%= cardiologist["Libellé Voie"] %> <%= cardiologist["Code Postal"] %> <%= cardiologist["Libellé commune"] %> <%= cardiologist["distance"].truncate(2)  %> km</p></div>
     </div>
   <% end %>
 </div>
