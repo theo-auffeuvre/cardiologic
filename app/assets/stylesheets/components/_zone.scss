@@ -1,3 +1,11 @@
+
+.perspective {
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
 #zone {
   height: 350px;
   width: 100%;
@@ -7,6 +15,8 @@
   justify-content: center;
   border-radius: 20px;
   cursor: pointer;
+  transform: perspective(100px) translateZ(0px);
+  transition: transform 100ms linear;
   transition: all 0.3s ease;
 }
 
@@ -14,6 +24,9 @@
   border-color: #CCCCCC;
   border-style: dash 10px;
   background-color: $gray0;
+  // transform: translateZ(16000px);
+  transform: perspective(100px) translateZ(5px);
+
 }
 
 .up {
@@ -24,7 +37,9 @@
 
 #zone:hover img {
   width:6rem;
-  margin-bottom: -3rem;;
+  margin-bottom: -3rem;
+
+
 }
 #zone img {
   width:4.5rem;
