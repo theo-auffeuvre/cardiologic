@@ -79,7 +79,7 @@
         <div data-controller="search-cardio" class="w-100" >
           <%= form_with url: consultation_search_cardio_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
             <%= form.label :place, "Location:" %>
-            <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"} %>
+            <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"}, autocomplete: "shipping address-line1" %>
             <%= form.submit "Send", value: 1, data: {action: "click->search-cardio#update"} %>
           <% end %>
           <div><%= render 'consultations/cardiologists' %></div>
@@ -100,3 +100,4 @@
 
     <% end %>
 </div> <!-- end ecg flex container -->
+

@@ -1,9 +1,9 @@
  <div data-search-cardio-target="list">
  
   <% @cardiologists&.each do |cardiologist| %>
-    <div class="bg-white my-2 py-2 px-1 rounded" data-action="click->search-cardio#selectcardio" value="<%= cardiologist["Prénom d'exercice"] %>_<%= cardiologist["Nom d'exercice"] %>">
+    <div class="bg-white my-2 py-2 px-1 rounded" data-action="click->search-cardio#selectcardio" data-search-cardio-target="cardio" data-search-cardio-url-value="https://www.doctolib.fr/cardiologue/lyon/<%= cardiologist["Prénom d'exercice"].downcase %>-<%= cardiologist["Nom d'exercice"].downcase %>">
       <div><%= cardiologist["Libellé civilité d'exercice"] %> <%= cardiologist["Nom d'exercice"] %> <%= cardiologist["Prénom d'exercice"] %></div>
-      <span><%= cardiologist["Numéro Voie"] %> <%= cardiologist["Libellé Voie"] %> <%= cardiologist["Code Postal"] %> <%= cardiologist["Libellé commune"] %></span>
+      <span><%= cardiologist["Numéro Voie"] %> <%= cardiologist["Libellé Voie"] %> <%= cardiologist["Code Postal"] %> <%= cardiologist["Libellé commune"] %> <%= cardiologist["distance"].truncate(2)  %> km</span>
     </div>
   <% end %>
  </div>
