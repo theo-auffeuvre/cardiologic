@@ -47,7 +47,7 @@
         <span class="exclamation">!</span><p> WARNING : This EKG has abnormal high frequency. <br>A cardiologist will contact you.  </p>
       </div>
     </div>
-    
+
 <!--- CAPSULE RIGHT --->
     <div class="capsuleRight scale-up-br">
         <div class="consultation" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
@@ -58,15 +58,15 @@
     <% elsif @consultation.diagnostic == "orange" %>
 
       <div class="alerte orange">
-        <span class="exclamation">!</span><p> WARNING : This EKG has irregular frequency.A checkup with a specialist is recommended.  </p>
+        <span class="exclamation">!</span><p> WARNING : This EKG has irregular frequency. A checkup with a specialist is recommended.</p>
       </div>
     </div>
 <!--- CAPSULE RIGHT --->
       <div class="capsuleRightOrange scale-up-br d-flex align-items-end flex-column">
-        <div data-controller="search-cardio" class="w-100" >
+        <div data-controller="search-cardio" class="w-100 search-bar">
           <%= form_with url: consultation_search_cardio_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
-            <%= form.label :place, "Location:" %>
-            <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"} %>
+            <%= form.label :place, "Location:", class:"search-form-txt" %>
+            <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"}, class:"search-form-input" %>
             <%= form.submit "Send", value: 1, data: {action: "click->search-cardio#update"} %>
           <% end %>
           <div><%= render 'consultations/cardiologists' %></div>

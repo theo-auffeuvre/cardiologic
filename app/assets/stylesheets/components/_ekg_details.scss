@@ -129,6 +129,12 @@ line-height:1rem;
   width: 24%;
   list-style-type: none;
   border-left: 1px solid $gray30;
+  // animation: fade 0.8s ease-in-out 4s;
+  // transition: all 0.3s ease-in-out;
+  animation-name: fade;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 4s;
 
 
   color: $gray;
@@ -139,4 +145,22 @@ line-height:1rem;
 }
 .ekg-list li:first-child {
   border-left: none;
+}
+
+
+@keyframes fade {
+  0% {
+    transform: opacity(0%);
+    border-left: 1px;
+  }
+  50% {
+    transform: opacity(10%);
+    border-left: 8px;;
+
+  }
+  100% {
+    transform: opacity(90%);
+    border-left: 30px;;
+
+  }
 }
