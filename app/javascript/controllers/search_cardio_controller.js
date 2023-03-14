@@ -26,6 +26,6 @@ export default class extends Controller {
   }
 
   selectcardio(e){
-    console.log(e.currentTarget)
+    console.log(e.currentTarget.dataset.searchCardioUrlValue.replace(/ /g, "-"))
   }
 }
