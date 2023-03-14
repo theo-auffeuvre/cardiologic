@@ -6,11 +6,11 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 #zone.hover {
   border-color: #CCCCCC;
   border-style: solid;
   background-color: rgb(55,65,82);
-  cursor: pointer;
 }
