@@ -5,7 +5,7 @@
   </div>
   <div class="row justify-content-center" data-loading-animation-target="divglobale">
   <h5>Patient informations :</h5>
-    <div class ="col-8" id="form-analysis">
+    <div class ="col-lg-8 col-sm-8" id="form-analysis">
         <%= simple_form_for @consultation, data: { action: "submit->loading-animation#animation" } do |c| %>
         <%= c.simple_fields_for :patient do |p|%>
         <div class="container d-flex">
@@ -21,10 +21,10 @@
         </div>
         <div class="container d-flex">
         <div class= "col-4 mb-3 pe-3">
-          <%= p.input :height, label: 'Height(cm)' %>
+          <%= p.input :height, label: 'Height (cm)' %>
         </div>
         <div class= "col-4 mb-3 pe-3">
-          <%= p.input :weight, label: 'Weight(kg)' %>
+          <%= p.input :weight, label: 'Weight (kg)' %>
         </div>
         </div>
         <% end %>
@@ -41,7 +41,7 @@
             <%= c.input :file, as: :file, input_html: {class: "upload-area", "data-drag-drop-target" => "input", "data-action"=>"change->drag-drop#onInputChange"}, label:false%>
         </div>
 
-        <div class="d-flex justify-content-center mt-3" style="background-color: rgb(17,24,40); border-radius: 10px;"><%= c.button :submit, class: 'text-white' %></div>
+        <div class="d-flex justify-content-center mt-3" style="background-color: rgb(17,24,40); border-radius: 10px; padding-top: 7px; height: 55px;"><%= c.button :submit, class: 'text-white' %></div>
       <% end %>
     </div>
 
