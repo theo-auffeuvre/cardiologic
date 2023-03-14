@@ -5,6 +5,7 @@ export default class extends Controller {
     static targets = [ 'input','zone' ]
 
     connect(){
+      console.log('b');
       console.log("controller drag-drop connecté !");
     }
 
@@ -23,6 +24,7 @@ export default class extends Controller {
     onInputChange(event) {
       console.log('On Input change triggered', this.inputTarget.files[0])
       this.zoneTarget.innerText = this.inputTarget.files[0]?.name;
+      this.zoneTarget.classList.add('hover');
     }
 
     drop(event) {

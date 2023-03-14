@@ -1,34 +1,23 @@
-
-
-
-
-
-
-
-
-
 <div class="ecg-flex-container" style="margin-bottom:3rem;">
-    <h1>Analysis results</h1>
+    <h1 class="display-6 pt-4 pb-2" style="margin-top:3rem;">Analysis results</h1>
 </div>
-
 <div class="ecg-flex-container">
 <!--- CAPSULE LEFT --->
     <div class="capsuleLeft scale-up-bl">
       <div class="ekg-details">
-        <h3>Patient informations:</h3>
-        <div class="ekg-list">
-          <p>First Name:<%= @consultation.patient.first_name %></p>
-          <p>Last name:<%= @consultation.patient.last_name %></p>
-          <p>Birth date:<%= @consultation.patient.birth_date%></p>
-          <p><%= @consultation.patient.height%>cm</p>
+        <h3 style="font-size: 1.9rem;">Patient informations:</h3>
+        <div class="ekg-list pt-4">
+          <ul>
+            <li class="sliplitvertical"><p><strong>First Name:</strong></p><p><%= @consultation.patient.first_name %></li>
+            <li><p><strong>Last name:</strong></p><p><%= @consultation.patient.last_name %></li>
+            <li><p><strong>Birth date:</strong></p><p><%= @consultation.patient.birth_date%></li>
+            <li><p><strong>Height:</strong></p><%= @consultation.patient.height%>cm</li>
+          </ul>
         </div>
       </div>
-
-
       <div style="background-color:white; border-radius:1rem; padding:1rem;">
         <%= line_chart @data, min: 500, points: false %>
       </div>
-
       <div class="ekg-details">
           <div class="ekg-list">
             <div style="animation-delay:0ms;" class="scale-up-bl bpm"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
@@ -53,9 +42,7 @@
           </div>
       </div>
 
-
       <% if @consultation.diagnostic == "red" %>
-
       <div class="alerte rouge">
         <span class="exclamation">!</span><p> WARNING : This EKG has abnormal high frequency. <br>A cardiologist will contact you.  </p>
       </div>
@@ -71,21 +58,21 @@
     <% elsif @consultation.diagnostic == "orange" %>
 
       <div class="alerte orange">
-        <span class="exclamation">!</span><p> WARNING : This EKG has irregular frequency.A checkup with a specialist is recommended.  </p>
+        <span class="exclamation">!</span><p> WARNING : This EKG has irregular frequency. A checkup with a specialist is recommended.</p>
       </div>
     </div>
 <!--- CAPSULE RIGHT --->
       <div class="capsuleRightOrange scale-up-br d-flex align-items-end flex-column">
-        <div data-controller="search-cardio" class="w-100" >
+        <div data-controller="search-cardio" class="w-100 search-bar">
           <%= form_with url: consultation_search_cardio_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
-            <%= form.label :place, "Location:" %>
-            <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"}, autocomplete: "shipping address-line1" %>
+            <%= form.label :place, "Location:", class:"search-form-txt" %>
+            <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"}, class:"search-form-input" %>
             <%= form.submit "Send", value: 1, data: {action: "click->search-cardio#update"} %>
           <% end %>
           <div><%= render 'consultations/cardiologists' %></div>
           <a data-search-cardio-target="pagenumber" data-action="click->search-cardio#update" value="1">Next</a>
         </div>
-        <div class="w-100  mt-auto" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
+        <div class="w-100 mt-auto" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
           <%= form_with url: send_mail_path do |form| %>
             <%= form.label :mail, "Email:" %>
             <%= form.text_field :mail %>
@@ -97,7 +84,6 @@
       <div class="alerte verte">
         <span class="exclamation">!</span><p> This EKG does not show any issues.</p>
       </div>
-
     <% end %>
 </div> <!-- end ecg flex container -->
 

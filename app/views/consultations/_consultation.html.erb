@@ -1,9 +1,8 @@
-<div class="card-consultation mb-3 ms-4 d-flex" style="display: flex; height: 150px; width: 70%; border: solid #CCCCCC 2px; border-radius: 5px; box-shadow: 3px 2px 1px rgb(207,211,216); background: rgb(245,245,245);">
-  <%# <div class="g"> %>
-    <div style="margin-top: 20px; padding-left: 10px; padding-right: 20px; border-right: solid #CCCCCC">
-      <%= consultation.created_at.strftime("%Y-%m-%d") %>
+<div class="card-consultation mb-3 ms-4 d-flex" style="display: flex; height: 150px; width: 70%; border-radius: 5px; background: rgb(245,245,245);">
+    <div style="margin-top: 20px; margin-bottom: 15px; padding-left: 10px; padding-right: 10px; border-right: solid #CCCCCC">
+      <%= consultation.created_at.strftime("%A %d %B") %>
     </div>
-    <div style="margin-top: 20px; margin-left: 60px;">
+    <div style="margin-top: 20px; margin-left: 60px; flex-grow: 1;">
     <h3>
         <%= consultation.patient.first_name%>
         <strong><%= consultation.patient.last_name%></strong>
@@ -19,15 +18,15 @@
          <p>ARYTHMIA</p>
          </div>
          <%elsif consultation.diagnostic =="orange"%>
-         <div style="display-flex;">
+         <div style="display: flex;">
          <%= image_tag "orange-dot.png", alt:"orange dot", width:30 %>
          <p>ARYTHMIA</p>
          </div>
          <%end%>
     </div>
 
-    <div style="margin-top:20px; height: 40px; padding: 5px 50px 5px 50px; margin-left: 80px; background-color: rgb(17,24,40); border-radius: 5px;">
+    <div style="margin-top:20px; height: 40px; padding: 5px 50px 5px 50px; margin-left: 80px; margin-right:20px;  background-color: rgb(17,24,40); border-radius: 5px;">
       <%= link_to "View", consultation_path(consultation), class: "view-button"%>
     </div>
-  <%# </div> %>
+
 </div>
