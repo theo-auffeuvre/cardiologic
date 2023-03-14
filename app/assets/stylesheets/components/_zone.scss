@@ -7,10 +7,32 @@
   justify-content: center;
   border-radius: 20px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-#zone.hover {
+#zone:hover {
   border-color: #CCCCCC;
-  border-style: solid;
-  background-color: rgb(55,65,82);
+  border-style: dash 10px;
+  background-color: $gray0;
+}
+
+.up {
+  margin-top: 0rem;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+#zone:hover img {
+  width:6rem;
+  margin-bottom: -3rem;;
+}
+#zone img {
+  width:4.5rem;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+
+}
+
+#zone:hover .up {
+  margin-top: -3rem;
 }
