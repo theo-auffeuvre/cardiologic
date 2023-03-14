@@ -114,7 +114,7 @@
         <div data-controller="search-cardio" class="w-100 search-bar" style="padding-top: 1rem;">
           <%= form_with url: consultation_search_cardio_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
             <strong><%= form.label :place, "Location:", class:"search-form-txt" %></strong>
-            <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"}, class:"search-form-input" %>
+            <%= form.text_field :place, value: params[:place],id: "search-js", data: {search_cardio_target: "input"}, class:"search-form-input" %>
            <a> <%= form.submit "Send", value: 1, data: {action: "click->search-cardio#update"} %>bouton</a>
           <% end %>
           <div><%= render 'consultations/cardiologists' %></div>
