@@ -1,27 +1,24 @@
 <div class="messages" data-consultation-subscription-target="messages">
-    <div class="message-row d-flex flex-column justify-content-start">
-      <div class="receiver-head scale-up-br">
+  <div class="message-row d-flex flex-column justify-content-start">
+    <div class="receiver-head scale-up-br">
       <img class="avatar" src="/assets/Sarah-Chalke-Dr-Elliot-Reid.webp">
-        <div>
-          <p>Dr Vanessa Heart</p>
-          <p>Cardiologist</p>
-        </div>
+      <div>
+        <p>Dr Vanessa Heart</p>
+        <p>Cardiologist</p>
       </div>
     </div>
+  </div>
 
+  <% @consultation.messages.each do |message| %>
+  <div class="message-row d-flex flex-column <%= message.user.cardiologist? ? 'justify-content-end' : 'justify-content-start' %>" id="message-<%= message.id %>">
 
-  <% @consultation.messages.each do | message | %>
-
-    <div class="message-row d-flex flex-column <%= message.user.cardiologist? ? 'justify-content-end' : 'justify-content-start' %>" id="message-<%= message.id %>">
-
-      <div class="<%= message.user.cardiologist? ? 'sender-style scale-up-br' : 'receiver-style scale-up-bl' %>">
-        <small>
-        <%= message.user_id %>
-        <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <a><%= message.content %></a>
-      </div>
+    <div class="<%= message.user.cardiologist? ? 'sender-style scale-up-br' : 'receiver-style scale-up-bl' %>">
+      <small>
+      <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+      </small>
+      <a><%= message.content %></a>
     </div>
+  </div>
   <% end %>
 
 </div>

@@ -1,11 +1,16 @@
+<div
+style="padding:10rem;">
+
+
   <%= form_with url: "/messages/createsandwich", method: :post do |f|
 
   %>
     <%= f.text_field :consultation,
-      wrapper_html: {class: "flex-grow-1"}
+      wrapper_html: {class: "flex-grow-1"}, style:"border:1px solid red", placeholder:"id"
     %>
         <%= f.text_field :content,
-      wrapper_html: {class: "flex-grow-1"}
+      wrapper_html: {class: "flex-grow-1"}, style:"border:1px solid red"
     %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
+</div>
