@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users do
-    get '/users/sign_out', to: 'devise/sessions#destroy'
-  end
+  devise_for :users
 
   get "pages/toto", to: "pages#toto", as: "/toto"
 
@@ -20,10 +18,10 @@ Rails.application.routes.draw do
 
   get "/sandwich", to: "consultations#sandwich"
   post "messages/createsandwich", to: "messages#createsandwich"
-  
 
-  
-  
+
+
+
 
   get '/myprofile', to: 'users#myprofile'
 
