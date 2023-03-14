@@ -1,7 +1,6 @@
   <div class="message-row d-flex flex-column <%= message.user.cardiologist? ? 'justify-content-end' : 'justify-content-start' %>" id="message-<%= message.id %>">
     <div class="<%= message.user.cardiologist? ? 'sender-style scale-up-br' : 'receiver-style scale-up-bl' %>">
       <small>
-        <strong><%= message.user_id %></strong>
         <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
       </small>
       <p><%= message.content %></p>

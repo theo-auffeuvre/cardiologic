@@ -16,7 +16,7 @@
       <small>
       <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
       </small>
-      <a><%= message.content %></a>
+      <p><%= message.content %></p>
     </div>
   </div>
   <% end %>
@@ -24,7 +24,7 @@
 </div>
 
 <div>
-    <div class="zobi">
+    <div class="">
     <%= simple_form_for [@consultation, @message],
       html: {data: { action: "turbo:submit-end->consultation-subscription#resetForm" }, class: "d-flex"} do |f|
     %>
