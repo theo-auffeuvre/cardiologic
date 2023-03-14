@@ -92,9 +92,51 @@
 // }
 ///////////////////////////////
 
+.search-bar {
+  background-color: $orangeLight;
+  border-radius: $border-radius;
+  padding: $border-radius;
+}
+.search-form-txt {
+
+}
+.search-form-input {
+  background-color: $gray10;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+
+}
+.search-form-cardio div {
+  padding: $border-radius;
+  display: flex;
+
+}
+
+.txt-min {
+  font-size: 0.8rem;
+}
 
 
 
+.bt-round-white {
+
+  border-radius: 50%;
+  background-color: white;
+  padding: 0.4rem;
+  border: 1px solid white;
+  transition: all 0.3s ease-in-out;
+}
+
+.bt-round-white:hover {
+  border: 4px
+
+
+}
+.zobi {
+  transition: all 0.3s ease-in-out;
+
+
+}
 .toto-title {
   color: red;
   animation: toto 2s;

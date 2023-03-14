@@ -27,15 +27,17 @@
 </div>
 
 <div>
-  <%= simple_form_for [@consultation, @message],
-    html: {data: { action: "turbo:submit-end->conultation-subscription#resetForm" }, class: "d-flex"} do |f|
-  %>
-    <%= f.input :content,
-      label: false,
-      wrapper_html: {class: "flex-grow-1"}
+    <div class="zobi">
+    <%= simple_form_for [@consultation, @message],
+      html: {data: { action: "turbo:submit-end->conultation-subscription#resetForm" }, class: "d-flex"} do |f|
     %>
-    <%= f.submit "Send", type: :image, src: "#{image_path 'send-bt.svg'}", height: 40 %>
-  <% end %>
+        <%= f.input :content,
+          label: false,
+          wrapper_html: {class: "flex-grow-1"}
+        %>
+        <%= f.submit "Send", type: :image, src: "#{image_path 'send-bt.svg'}", height: 35, class: "bt-round-white " %>
+    <% end %>
+    </div>
   <div>
 
 </div>
