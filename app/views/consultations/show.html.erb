@@ -5,7 +5,7 @@
 <!--- CAPSULE LEFT --->
     <div class="capsuleLeft scale-up-bl">
       <div class="ekg-details">
-        <h3 style="font-size: 1.9rem;">Patient informations:</h3>
+        <h3 style="font-size: 1.9rem;">Patient information:</h3>
         <div class="ekg-list pt-4">
           <ul>
             <li class="sliplitvertical"><p><strong>Name:</strong></p><p><%= @consultation.patient.first_name %> <%= @consultation.patient.last_name %></li>
@@ -18,7 +18,7 @@
       <div style="background-color:white; border-radius:1rem; padding:1rem;">
         <%= line_chart @data, min: 500, points: false %>
       </div>
-      <div class="ekg-details">
+    <div class="ekg-details">
           <% if @consultation.diagnostic == "orange"  %>
           <div class="ekg-list">
             <div style="animation-delay:0ms;" class="scale-up-bl bpm alerteOrange"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
@@ -114,8 +114,11 @@
         <div data-controller="search-cardio" class="w-100 search-bar" style="padding-top: 1rem;">
           <%= form_with url: consultation_search_cardio_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
             <strong><%= form.label :place, "Location:", class:"search-form-txt" %></strong>
-            <%= form.text_field :place, value: params[:place],id: "search-js", data: {search_cardio_target: "input"}, class:"search-form-input" %>
-           <a> <%= form.submit "Send", value: 1, data: {action: "click->search-cardio#update"} %>bouton</a>
+
+            <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"}, class:"search-form-input" %>
+
+            <%= form.submit " > ", class: "transparent", data: {action: "click->search-cardio#update"} %>
+
           <% end %>
           <div><%= render 'consultations/cardiologists' %></div>
           <%# <a data-search-cardio-target="pagenumber" data-action="click->search-cardio#update" value="1">Next</a> %>
@@ -124,7 +127,7 @@
           <%= form_with url: send_mail_path do |form| %>
             <%= form.label :mail, "Email:" %>
             <%= form.text_field :mail %>
-            <%= form.submit "Send" %>
+            <%= form.submit " > ", class: "envoi-email" %>
           <% end %>
         </div>
       </div>
