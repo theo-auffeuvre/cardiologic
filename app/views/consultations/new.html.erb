@@ -1,11 +1,16 @@
-<h3 style="font-size: 1.9rem;">Assess a new analysis</h3>
-<div class="container mt-5" data-controller="loading-animation">
-  <div data-loading-animation-target="divgif" class="d-none d-flex justify-content-center">
+
+<div class="ecg-flex-container" style="margin-bottom:3rem;">
+  <h3 style="font-size: 1.9rem; margin-top: 3rem;" class="display-6 pt-4 pb-2">Assess a new analysis</h3>
+</div>
+
+<div class="capsuleLeft" data-controller="loading-animation">
+  <div data-loading-animation-target="divgif" class="d-none d-flex justify-content-center" style="mix-blend-mode: multiply;">
     <%= image_tag "loading-ecg.gif" %>
   </div>
+
   <div class="row justify-content-center" data-loading-animation-target="divglobale">
-  <h5>Patient informations :</h5>
     <div class ="col-lg-8 col-md-8 col-sm-8" id="form-analysis">
+       <div style="border-bottom: solid 1px rgba(0, 0, 0, 0.3); padding: 1rem 0; margin-bottom: 3rem; margin-top: 2rem; font-size: 1.6rem;"><h5>Patient informations :</h5></div>
         <%= simple_form_for @consultation, data: { action: "submit->loading-animation#animation" } do |c| %>
         <%= c.simple_fields_for :patient do |p|%>
         <div class="container d-flex">
@@ -34,11 +39,11 @@
             data-drag-drop-target="zone"
             data-action="drop->drag-drop#drop dragover->drag-drop#dragover dragleave->drag-drop#dragleave click->drag-drop#onDropZoneClick" >
             <div style="flex-direction: column; justify-content: center;">
-              <div style="text-align: center;">Drag and drop your EKG file (.mat) <br> or click </div>
-              <div style="padding-left: 115px;"><%= image_tag "arrow-down.svg", alt:"fleche", width:30 %></div>
+              <div style="" class="up"><strong>Drag & drop<br> your EKG file (.mat) <br> or <a href="#" style="text-decoration:underline">click</a> </div>
+              <%= image_tag "arrow-down.svg", alt:"fleche", width:30 %></strong>
             </div>
           </div>
-            <%= c.input :file, as: :file, input_html: {class: "upload-area", "data-drag-drop-target" => "input", "data-action"=>"change->drag-drop#onInputChange"}, label:false%>
+           <%= c.input :file, as: :file, input_html: {class: "upload-area", "data-drag-drop-target" => "input", "data-action"=>"change->drag-drop#onInputChange"}, label:false %>
         </div>
 
         <div class="d-flex justify-content-center mt-3" style="background-color: rgb(17,24,40); border-radius: 10px; padding-top: 7px; height: 55px;"><%= c.button :submit, class: 'text-white' %></div>
