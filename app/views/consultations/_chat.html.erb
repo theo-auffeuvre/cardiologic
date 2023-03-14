@@ -29,7 +29,7 @@
 <div>
     <div class="zobi">
     <%= simple_form_for [@consultation, @message],
-      html: {data: { action: "turbo:submit-end->conultation-subscription#resetForm" }, class: "d-flex"} do |f|
+      html: {data: { action: "turbo:submit-end->consultation-subscription#resetForm" }, class: "d-flex"} do |f|
     %>
         <%= f.input :content,
           label: false,
