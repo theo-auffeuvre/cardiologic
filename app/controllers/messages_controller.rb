@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
     @consultation = Consultation.find(params[:consultation])
     @message = Message.new(content: params[:content])
     @message.consultation = @consultation
-    @message.user = current_user
+    @message.user = User.find(2)
 
     if @message.save
 
