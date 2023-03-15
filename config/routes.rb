@@ -13,18 +13,11 @@ Rails.application.routes.draw do
   resources :consultations, only: %i[new create show index search_cardio] do
     resources :users, only: %i[new create]
     resources :messages, only: :create
-    get "/search_cardio", to: "consultations#search_cardio"
+    get :search_cardio, on: :member
+    post :send_mail, on: :member
   end
 
   get "/sandwich", to: "consultations#sandwich"
   post "messages/createsandwich", to: "messages#createsandwich"
-
-
-
-
-
   get '/myprofile', to: 'users#myprofile'
-
-  post "/send_mail", to: "consultations#send_mail"
-
 end
