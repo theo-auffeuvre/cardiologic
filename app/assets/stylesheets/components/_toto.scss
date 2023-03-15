@@ -3,6 +3,7 @@
   background-color: $orangeLight;
   border-radius: $border-radius;
   padding: $border-radius;
+  transition: all 0.3s ease-in-out;
 
 }
 .search-form-txt {
@@ -16,9 +17,36 @@
 }
 .search-form-cardio div {
   padding: $border-radius;
-  display: flex;
-
+  // background-color: $gray10;
+  border-top: 1px dashed rgba(0,0,0,0.3);
+  transition: all 0.3s ease-in-out;
 }
+.search-form-cardio div:hover {
+  background-color: rgba(255,255,255,0.2);
+  cursor: pointer;
+}
+
+.search-form-cardio:nth-child(1) {
+  margin-top: $border-radius;
+  border-top: inherit;
+  border-top: 1px solid rgba(0,0,0,0.3);
+}
+
+.search-form-cardio div + p {
+  color: red;
+}
+.send-mail {
+  border-radius: $border-radius;
+  padding: 1rem;
+  background-color: wheat;
+}
+
+.send-mail-champ {
+  border-radius: $border-radius/2;
+  padding: 0.5rem;
+  background-color: white;
+}
+
 
 .txt-min {
   font-size: 0.8rem;
