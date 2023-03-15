@@ -15,7 +15,7 @@
           </ul>
         </div>
       </div>
-      <div style="background-color:white; border-radius:1rem; padding:1rem;">
+      <div style="background-color:white; border-radius:1rem; padding:1rem;" class="perspective">
         <%= line_chart @data, min: 500, points: false %>
       </div>
     <div class="ekg-details">
@@ -24,22 +24,22 @@
             <span class="exclamation">!</span><p> WARNING : This EKG has irregular frequency. A checkup with a specialist is recommended.</p>
           </div>
           <div class="ekg-list">
-            <div style="animation-delay:0ms;" class="scale-up-bl bpm alerteOrange"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
+            <div style="animation-delay:0ms;" class="bpm perspective alerteOrange"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
               <%= image_tag "courb.svg", alt: "courbe", width: 100 %>
             </div>
             <div class="splitVertical">
-              <div style="animation-delay:500ms;" class="scale-up-bl interval alerteOrange">
+              <div style="animation-delay:500ms;" class="perspective interval alerteOrange">
                 <strong><%= @intervals_in_ms.max %></strong><p>Interval<br> max</p>
               </div>
-              <div style="animation-delay:600ms;" class="scale-up-bl interval alerteOrange">
+              <div style="animation-delay:600ms;" class="perspective interval alerteOrange">
                 <strong><%= @intervals_in_ms.min %></strong><p>Interval<br>min </p>
               </div>
             </div>
             <div class="splitVertical">
-              <div style="animation-delay:700ms;" class="scale-up-bl interval alerteRouge">
+              <div style="animation-delay:700ms;" class="perspective interval alerteRouge">
                 <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong><p>Delta ▲△</p>
               </div>
-              <div style="animation-delay:800ms;" class="scale-up-bl interval alerteVerte">
+              <div style="animation-delay:800ms;" class="perspective interval alerteVerte">
                 <strong>FA</strong><p>Type</p>
               </div>
             </div>
@@ -71,22 +71,22 @@
           </div>
                    <% elsif @consultation.diagnostic == "green" %>
                     <div class="ekg-list">
-            <div style="animation-delay:0ms;" class="scale-up-bl bpm alerteVerte"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
+            <div style="animation-delay:0ms;" class="perspective bpm alerteVerte"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
               <%= image_tag "courb.svg", alt: "courbe", width: 100 %>
             </div>
             <div class="splitVertical">
-              <div style="animation-delay:500ms;" class="scale-up-bl interval alerteVerte">
+              <div style="animation-delay:500ms;" class="perspective interval alerteVerte">
                 <strong><%= @intervals_in_ms.max %></strong><p>Interval<br> max</p>
               </div>
-              <div style="animation-delay:600ms;" class="scale-up-bl interval alerteVerte">
+              <div style="animation-delay:600ms;" class="perspective interval alerteVerte">
                 <strong><%= @intervals_in_ms.min %></strong><p>Interval<br>min </p>
               </div>
             </div>
             <div class="splitVertical">
-              <div style="animation-delay:700ms;" class="scale-up-bl interval alerteVerte">
+              <div style="animation-delay:700ms;" class="perspective interval alerteVerte">
                 <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong><p>Delta ▲△</p>
               </div>
-              <div style="animation-delay:800ms;" class="scale-up-bl interval alerteVerte">
+              <div style="animation-delay:800ms;" class="perspective interval alerteVerte">
                 <strong>Sinus rythm</strong><p>Type</p>
               </div>
             </div>
@@ -95,7 +95,6 @@
       </div>
 
       <% if @consultation.diagnostic == "red" %>
-
     </div>
 
 <!--- CAPSULE RIGHT --->
@@ -114,6 +113,7 @@
         <div data-controller="search-cardio" class="w-100 search-bar" style="padding-top: 1rem;">
           <%= form_with url: consultation_search_cardio_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
             <strong><%= form.label :place, "Location:", class:"search-form-txt" %></strong>
+
             <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"}, class:"search-form-input", autocomplete: "address-line1" %>
 
             <%= form.submit " > ", class: "transparent", data: {action: "click->search-cardio#update"} %>
@@ -130,7 +130,7 @@
         </div>
       </div>
     <% else %>
-      <div class="alerte verte">
+      <div class="alerte perspective_min verte">
         <span class="exclamation">!</span><p> This EKG does not show any issues.</p>
       </div>
     <% end %>
