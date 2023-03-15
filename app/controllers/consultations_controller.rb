@@ -37,7 +37,7 @@ class ConsultationsController < ApplicationController
   end
 
   def index
-    @consultations = Consultation.all
+    @consultations = Consultation.all.sort_by(&:created_at).reverse
   end
 
   def send_mail

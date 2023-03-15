@@ -1,0 +1,5 @@
+meta_product_name: "Cardiologic"
+meta_title: "Cardiologic - Fast EKG analyzer"
+meta_description: "Fast EKG analyzer"
+meta_image: "cover.jpg" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards

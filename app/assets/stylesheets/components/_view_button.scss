@@ -1,3 +1,12 @@
 .view-button{
   color: white;
+  height: 40px; 
+  width: 60%;
+  padding: 0.3rem 1.2rem;
+  background-color: rgb(17,24,40); 
+  border-radius: 5px;
+}
+
+.view-button:hover{
+  color: white;
 }
