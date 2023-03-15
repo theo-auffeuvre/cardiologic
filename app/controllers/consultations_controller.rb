@@ -2,6 +2,9 @@ require 'csv'
 require "chartkick"
 
 class ConsultationsController < ApplicationController
+  before_action :set_consultation, on: [:show, :send_mail, :search_cardio]
+  before_action :set_nereast_cardiologists, on: [:send_mail, :search_cardio]
+
 
   def new
     @consultation = Consultation.new
@@ -26,7 +29,6 @@ class ConsultationsController < ApplicationController
   end
 
   def show
-    @consultation = Consultation.find(params[:id])
     @data = JSON.parse(@consultation.patient.ecgs.last.data)
     @message = Message.new
     @peeks = peeks_extractor(@data)
@@ -41,17 +43,10 @@ class ConsultationsController < ApplicationController
   end
 
   def send_mail
-    ConsultationMailer.send_email(params[:mail]).deliver_later
+    ConsultationMailer.send_email(params[:mail], @consultation, params[:place]).deliver_later
   end
 
   def search_cardio
-
-    @consultation = Consultation.find(params[:consultation_id])
-    myplace = "#{params[:place]}"
-    @cardiologists = Cardiologist.near(myplace, 2, units: :km).first(5)
-    @cardiologists.map do |cardio|
-      cardio.attributes
-    end
     respond_to do |format|
       format.html
       format.text { render partial: "consultations/cardiologists", locals: {cardiologists: @cardiologists}, formats: [:html] }
@@ -59,6 +54,14 @@ class ConsultationsController < ApplicationController
   end
 
   private
+
+  def set_consultation
+    @consultation = Consultation.find(params[:id])
+  end
+
+  def set_nereast_cardiologists
+    @cardiologists = Cardiologist.near(params[:place], 2, units: :km).first(5)
+  end
 
   def consultation_params
     params.require(:consultation).permit(patient_attributes: [:first_name, :last_name, :birth_date, :height, :weight])
@@ -163,10 +166,6 @@ class ConsultationsController < ApplicationController
     else
       "green"
     end
-  end
-
-  def send_mail
-    ConsultationMailer.send_email().deliver_later
   end
 
 end

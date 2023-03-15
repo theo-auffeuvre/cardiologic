@@ -89,5 +89,7 @@ gem 'bootstrap', '~> 5.2.2'
 gem 'awesome_print'
 gem "chartkick"
 gem 'prawn'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 gem "matrix", "~> 0.4.2"
