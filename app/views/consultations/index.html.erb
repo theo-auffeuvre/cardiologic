@@ -7,12 +7,8 @@
 <div style="color: rgb(16,24,41); background: rgb(16,24,41); height: 1px;"></div>
 </div>
 
-
-<%  @consultations.each do |consultation| %>
-  <%= render "consultation", consultation: consultation%>
-<%#= consultation.diagnostic %>
-<%#= consultation.created_at.strftime("%Y-%m-%d") %>
-<%#= consultation.patient.first_name%>
-<%#= consultation.patient.last_name%>
-<%#= link_to "a", consultation_path(consultation) %>
-<%end %>
+<div style="display: grid; grid-template-columns: 1fr 1fr;">
+  <%  @consultations.each do |consultation| %>
+    <%= render "consultation", consultation: consultation%>
+  <%end %>
+</div>
