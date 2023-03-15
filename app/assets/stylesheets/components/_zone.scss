@@ -1,10 +1,20 @@
 
-.perspective {
+.perspective, .perspective_min {
+  cursor: pointer;
   perspective: 1000px;
   perspective-origin: 50% 50%;
   transform-style: preserve-3d;
   transition: all 0.3s ease;
 }
+
+.perspective:hover {
+  transform: perspective(100px) translateZ(5px);
+}
+
+.perspective_min:hover {
+  transform: perspective(100px) translateZ(1px);
+}
+
 
 #zone {
   height: 350px;
@@ -14,10 +24,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  cursor: pointer;
-  transform: perspective(100px) translateZ(0px);
-  transition: transform 100ms linear;
-  transition: all 0.3s ease;
+  // cursor: pointer;
+  // transform: perspective(100px) translateZ(0px);
+  // transition: transform 100ms linear;
+  // transition: all 0.3s ease;
 }
 
 #zone:hover {
