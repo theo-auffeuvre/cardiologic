@@ -1,8 +1,17 @@
-<div class="card-consultation mb-3 ms-4 d-flex" style="display: flex; height: 150px; width: 70%; border-radius: 5px; background: rgb(245,245,245);">
-    <div style="margin-top: 20px; margin-bottom: 15px; padding-left: 10px; padding-right: 10px; border-right: solid #CCCCCC">
-      <%= consultation.created_at.strftime("%A %d %B") %>
+<div class="card-consultation mb-4 ms-4 d-flex perspective " style="display: flex; height: 150px; width: 96%; border-radius: 0.2rem; background: rgb(245,245,245);">
+    <% if consultation.diagnostic == "green" %>
+    <div style="width: 0.5rem; background-color: #32CD32; border-top-left-radius: 0.2rem; border-bottom-left-radius: 0.2rem;"></div>
+    <%elsif consultation.diagnostic == "red"%>
+  <div style="width: 0.5rem; background-color: #FF0000; border-top-left-radius: 0.2rem; border-bottom-left-radius: 0.2rem;"></div>
+    <%elsif consultation.diagnostic =="orange"%>
+    <div style="width: 0.5rem; background-color: #FF7F50; border-top-left-radius: 0.2rem; border-bottom-left-radius: 0.2rem;"></div>
+    <%end%>
+    <div class="d-flex flex-column justify-content-center text-align-center text-center my-0 py-0" style="margin-top: 20px; margin-bottom: 15px; padding-left: 10px; padding-right: 10px; border-right: solid #CCCCCC; width: 20%">
+      <div><%= consultation.created_at.strftime("%A") %></div>
+      <div class="display-2"><%= consultation.created_at.strftime("%d") %></div>
+      <div><%= consultation.created_at.strftime("%B") %></div>
     </div>
-    <div style="margin-top: 20px; margin-left: 60px; flex-grow: 1;">
+    <div style="display:flex; flex-direction:column; width: 50%; justify-content:center; padding-left: 1rem">
     <h3>
         <%= consultation.patient.first_name%>
         <strong><%= consultation.patient.last_name%></strong>
@@ -10,23 +19,23 @@
 
         <% if consultation.diagnostic == "green" %>
         <div style="display: flex;">
-            <%= image_tag "green-dot.svg", alt:"green dot", width:30 %><p>NORMAL SINUS RYTHM</p>
+            <%= image_tag "courbblack.svg", alt:"green dot", width: "15%", class: "mx-2" %><p>NORMAL SINUS RYTHM</p>
         </div>
          <%elsif consultation.diagnostic == "red"%>
          <div style="display: flex;">
-         <%= image_tag "button-red.svg", alt:"red dot", width:20 %>
+         <%= image_tag "courbblack.svg", alt:"red dot", width: "15%", class: "mx-2" %>
          <p>ARYTHMIA</p>
          </div>
          <%elsif consultation.diagnostic =="orange"%>
          <div style="display: flex;">
-         <%= image_tag "orange-dot.png", alt:"orange dot", width:30 %>
+         <%= image_tag "courbblack.svg", alt:"orange dot", width: "15%", class: "mx-2" %>
          <p>ARYTHMIA</p>
          </div>
          <%end%>
     </div>
 
-    <div style="margin-top:20px; height: 40px; padding: 5px 50px 5px 50px; margin-left: 80px; margin-right:20px;  background-color: rgb(17,24,40); border-radius: 5px;">
-      <%= link_to "View", consultation_path(consultation), class: "view-button"%>
+    <div style="margin: auto;" >
+      <%= link_to "Details", consultation_path(consultation), class: "view-button"%>
     </div>
 
 </div>

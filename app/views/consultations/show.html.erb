@@ -70,7 +70,10 @@
             </div>
           </div>
                    <% elsif @consultation.diagnostic == "green" %>
-                    <div class="ekg-list">
+              <div class="alerte perspective_min verte">
+                <span class="exclamation">!</span><p> This EKG does not show any issues.</p>
+              </div>
+            <div class="ekg-list">
             <div style="animation-delay:0ms;" class="perspective bpm alerteVerte"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
               <%= image_tag "courb.svg", alt: "courbe", width: 100 %>
             </div>
@@ -128,10 +131,6 @@
             <%= form.submit " > ", class: "envoi-email" %>
           <% end %>
         </div>
-      </div>
-    <% else %>
-      <div class="alerte perspective_min verte">
-        <span class="exclamation">!</span><p> This EKG does not show any issues.</p>
       </div>
     <% end %>
 </div> <!-- end ecg flex container -->
