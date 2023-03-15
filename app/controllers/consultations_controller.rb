@@ -65,9 +65,9 @@ class ConsultationsController < ApplicationController
   end
 
   def upload_convert(mat_file)
-    system("python3 app/python/converter.py '#{mat_file}'")
+    # system("python3 app/python/converter.py '#{mat_file}'")
     array = []
-    CSV.foreach('test.csv') do |line|
+    CSV.foreach(mat_file) do |line|
       array << [line[0], line[1]]
     end
     return array
