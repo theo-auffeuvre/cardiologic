@@ -3,7 +3,7 @@ require "chartkick"
 
 class ConsultationsController < ApplicationController
   before_action :set_consultation, only: [:show, :send_mail, :search_cardio]
-  before_action :set_nereast_cardiologists, only: [:send_mail, :search_cardio]
+  # before_action :set_nereast_cardiologists, only: [:send_mail, :search_cardio]
 
 
   def new
@@ -47,6 +47,7 @@ class ConsultationsController < ApplicationController
   end
 
   def search_cardio
+    @cardiologists = Cardiologist.near(params[:place], 2, units: :km).first(5)
     respond_to do |format|
       format.html
       format.text { render partial: "consultations/cardiologists", locals: {cardiologists: @cardiologists}, formats: [:html] }
