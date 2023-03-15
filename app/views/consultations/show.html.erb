@@ -1,5 +1,5 @@
 <div class="ecg-flex-container" style="margin-bottom:3rem;">
-    <h1 class="display-6 pt-4 pb-2" style="margin-top:3rem;">Analysis results</h1>
+    <h1 class="display-6 pt-4 pb-2" style="margin-top:1rem;">Analysis results</h1>
 </div>
 <div class="ecg-flex-container">
 <!--- CAPSULE LEFT --->
@@ -24,7 +24,7 @@
             <span class="exclamation">!</span><p> WARNING : This EKG has irregular frequency. A checkup with a specialist is recommended.</p>
           </div>
           <div class="ekg-list">
-            <div style="animation-delay:0ms;" class="bpm perspective alerteOrange"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
+            <div style="animation-delay:0ms;" class="bpm perspective alerteVerte"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
               <%= image_tag "courb.svg", alt: "courbe", width: 100 %>
             </div>
             <div class="splitVertical">
