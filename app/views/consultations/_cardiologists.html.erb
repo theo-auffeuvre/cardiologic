@@ -1,10 +1,19 @@
  <div data-search-cardio-target="list">
 <!-- bg-white my-2 py-2 px-1 rounded form-label -->
-  <% @cardiologists&.each do |cardiologist| %>
+<% unless @cardiologists.nil? %>
+  <% @cardiologists.each do |cardiologist| %>
     <div class="search-form-cardio" data-action="click->search-cardio#selectcardio" data-search-cardio-target="cardio" data-search-cardio-url-value="https://www.doctolib.fr/cardiologue/lyon/<%= cardiologist["Prénom d'exercice"].downcase %>-<%= cardiologist["Nom d'exercice"].downcase %>">
-      <div><p><%= cardiologist["Libellé civilité d'exercice"] %></p></div>
-      <div><p><%= cardiologist["Nom d'exercice"] %> <%= cardiologist["Prénom d'exercice"] %></p>
-      <p class="txt-min"><%= cardiologist["Numéro Voie"] %> <%= cardiologist["Libellé Voie"] %> <%= cardiologist["Code Postal"] %> <%= cardiologist["Libellé commune"] %> <%= cardiologist["distance"].truncate(2)  %> km</p></div>
+      <div><p><%= cardiologist["Libellé civilité d'exercice"] %></p>
+      <p><strong><%= cardiologist["Nom d'exercice"] %> <%= cardiologist["Prénom d'exercice"] %></strong></p>
+      <p class="txt-min"><%= cardiologist["Numéro Voie"] %> <%= cardiologist["Libellé Voie"] %> <%= cardiologist["Code Postal"] %> <%= cardiologist["Libellé commune"] %></p><p><strong>► <%= cardiologist["distance"].truncate(2)  %> km</strong></p></div>
+    </div>
+  <% end %>
+    <div class="w-100 mt-4 send-mail" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
+    <p class="mt-2 mb-2"><strong>Send this list to your patient</strong></p>
+      <%= form_with url: send_mail_path do |form| %>
+        <%= form.text_field :mail, placeholder:  "patient@mail.com", class:"send-mail-champ" %>
+        <%= form.submit "SEND", class: "envoi-email" %>
+      <% end %>
     </div>
   <% end %>
 </div>

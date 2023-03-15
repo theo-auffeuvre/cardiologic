@@ -1,4 +1,15 @@
 .envoi-email{
-  background:rgb(245,245,245);
-  font-weight: bold;
+  border-radius: $border-radius/2;
+  padding: 0.5rem;
+  background-color: $blueDark;
+  // font-weight: bold;
+  color: $gray30;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.envoi-email:hover {
+  background-color: #2b5f7c;
+  color: $orange;
+
 }
