@@ -2,8 +2,8 @@ require 'csv'
 require "chartkick"
 
 class ConsultationsController < ApplicationController
-  before_action :set_consultation, on: [:show, :send_mail, :search_cardio]
-  before_action :set_nereast_cardiologists, on: [:send_mail, :search_cardio]
+  before_action :set_consultation, only: [:show, :send_mail, :search_cardio]
+  before_action :set_nereast_cardiologists, only: [:send_mail, :search_cardio]
 
 
   def new
