@@ -1,5 +1,6 @@
-<div class="mb-5">
-<h3 style="font-size: 1.9rem;">My analyses</h3>
+
+<div class="ecg-flex-container" style="margin-bottom:3rem;">
+    <h1 class="display-6 pt-4 pb-2" style="margin-top:1rem;">My analyses</h1>
 </div>
 
 <div class="mb-4">
@@ -9,6 +10,6 @@
 
 <div style="display: grid; grid-template-columns: 1fr 1fr;">
   <%  @consultations.each do |consultation| %>
-    <%= render "consultation", consultation: consultation%>
+    <%= render "consultation", consultation: consultation %>
   <%end %>
 </div>

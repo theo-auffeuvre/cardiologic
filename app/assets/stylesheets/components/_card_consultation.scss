@@ -7,3 +7,43 @@
 // .card-consultation .date {
 //   width:75%;
 // }
+
+
+.card-consultation{
+  width: 0.5rem;
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+
+
+.green {
+  background-color: $green;
+}
+.red {
+  background-color: $redDark;
+}
+.orange {
+  background-color: $orange;
+}
+.date-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dateTop{
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.5;
+  margin-top:1rem;
+}
+.dateBottom{
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.5;
+}
