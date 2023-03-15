@@ -1,35 +1,35 @@
 
 <div class="ecg-flex-container" style="margin-bottom:3rem;">
-  <h3 style="font-size: 1.9rem; margin-top: 3rem;" class="display-6 pt-4 pb-2">Assess a new analysis</h3>
+  <h1 style="margin-top: 1rem;" class="display-6 pt-4 pb-2">Evaluate a new analysis</h1>
 </div>
 
-<div class="capsuleLeft" data-controller="loading-animation">
+<div class="capsuleLeft scale-up-bl" data-controller="loading-animation">
   <div data-loading-animation-target="divgif" class="d-none d-flex justify-content-center" style="mix-blend-mode: multiply;">
     <%= image_tag "loading-ecg.gif" %>
   </div>
 
   <div class="row justify-content-center" data-loading-animation-target="divglobale">
     <div class ="col-lg-8 col-md-8 col-sm-8" id="form-analysis">
-       <div style="border-bottom: solid 1px rgba(0, 0, 0, 0.3); padding: 1rem 0; margin-bottom: 3rem; margin-top: 2rem; font-size: 1.6rem;"><h5>Patient informations :</h5></div>
+       <div style="border-bottom: solid 1px rgba(0, 0, 0, 0.3); padding: 1rem 0; margin-bottom: 2rem; font-size: 1.6rem;"><h5>Patient information :</h5></div>
         <%= simple_form_for @consultation, data: { action: "submit->loading-animation#animation" } do |c| %>
         <%= c.simple_fields_for :patient do |p|%>
         <div class="container d-flex">
           <div class= "col-4 pe-3">
-            <%= p.input :first_name, input_html: {class: 'rounded-input'}%>
+            <%= p.input :first_name, label: false, input_html: {class: 'rounded-input'}, placeholder: 'First name'%>
           </div>
           <div class= "col-4 pe-3">
-            <%= p.input :last_name, input_html: {class: 'rounded-input'} %>
+            <%= p.input :last_name, label: false, input_html: {class: 'rounded-input'}, placeholder: 'Last name' %>
           </div>
           <div class= "col-4 pe-3">
-            <%= p.input :birth_date, input_html: {type: "date", class: 'rounded-input'} %>
+            <%= p.input :birth_date,label: false, input_html: {type: "date",value: "1990-01-01", class: 'rounded-input'}, placeholder:'Birth date' %>
           </div>
         </div>
         <div class="container d-flex">
         <div class= "col-4 mb-3 pe-3">
-          <%= p.input :height, label: 'Height (cm)', input_html: {class: 'rounded-input'} %>
+          <%= p.input :height,label: false, input_html: {class: 'rounded-input'}, placeholder:'Height (cm)'  %>
         </div>
         <div class= "col-4 mb-3 pe-3">
-          <%= p.input :weight, label: 'Weight (kg)', input_html: {class: 'rounded-input'} %>
+          <%= p.input :weight, label: false, input_html: {class: 'rounded-input'}, placeholder: 'Weight (kg)' %>
         </div>
         </div>
         <% end %>
@@ -39,7 +39,7 @@
             data-drag-drop-target="zone"
             data-action="drop->drag-drop#drop dragover->drag-drop#dragover dragleave->drag-drop#dragleave click->drag-drop#onDropZoneClick" >
             <div style="flex-direction: column; justify-content: center;">
-              <div style="" class="up"><strong>Drag & drop<br> your EKG file (.mat) <br> or <a href="#" style="text-decoration:underline">click</a> </div>
+              <div style="" class="up"><strong>Drag & drop<br> your EKG file (.csv) <br> or <a href="#" style="text-decoration:underline">click</a> </div>
               <%= image_tag "arrow-down.svg", alt:"fleche", width:30 %></strong>
             </div>
           </div>
