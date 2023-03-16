@@ -1,11 +1,26 @@
 
 .search-bar {
+
   background-color: $orangeLight;
   border-radius: $border-radius;
   padding: $border-radius;
   transition: all 0.3s ease-in-out;
 
 }
+.search-flex-container {
+  display: flex;
+flex-wrap: nowrap;
+justify-content: space-around;
+  gap: 0.1rem;
+}
+
+.blueHover:hover {
+
+color: blueText;
+  cursor: pointer;
+}
+
+
 .search-form-txt {
 
 }

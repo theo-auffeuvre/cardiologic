@@ -113,13 +113,17 @@
       <div class="capsuleRightOrange scale-up-br d-flex flex-column">
        <h3 style="font-size: 1.9rem; padding-bottom:2rem; margin-top:1rem;" >Find available cardiologists</h3>
 
-        <div data-controller="search-cardio" class="w-100 search-bar" style="padding-top: 1rem;">
+        <div data-controller="search-cardio" class="search-bar" style="padding-top: 1rem;">
           <%= form_with url: search_cardio_consultation_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
-            <strong style="margin-right:0.5rem; color:#ae480f;"><i class="fa-sharp fa-solid fa-location-dot"></i> </strong>
-            <%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"}, class:"search-form-input", autocomplete: "address-line1" %>
-
-            <%= form.submit "Search", class: "envoi-email", data: {action: "click->search-cardio#update"} %>
+          <div class="search-flex-container">
+            <div><strong style="margin-right:0.5rem; color:#ae480f;"><i class="fa-sharp fa-solid fa-location-dot"></i> </strong></div>
+            <div style="flex-grow: 1; display:flex;">
+              <div><%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"}, class:"search-form-input", autocomplete: "address-line1", style:"flex-grow:1;" %> </div>
+              <div><%= form.submit "Search", class: "envoi-email", data: {action: "click->search-cardio#update"} %></div>
+            </div>
+          </div>
           <% end %>
+
           <div><%= render 'consultations/cardiologists', cardiologists: @cardiologists %></div>
           <%# <a data-search-cardio-target="pagenumber" data-action="click->search-cardio#update" value="1">Next</a> %>
         </div>
