@@ -16,7 +16,7 @@
         </div>
       </div>
       <div style="background-color:white; border-radius:1rem; padding:1rem;" class="perspective_min">
-        <%= line_chart @data, min: 500, points: false %>
+        <%= line_chart @data, min: 500, points: false, colors: ["#5f9ea0", "#a52a2a"] %>
       </div>
     <div class="ekg-details">
           <% if @consultation.diagnostic == "orange"  %>
@@ -29,15 +29,15 @@
             </div>
             <div class="splitVertical">
               <div style="animation-delay:500ms;" class="perspective interval alerteOrange">
-                <strong><%= @intervals_in_ms.max %></strong><p>Interval<br> max</p>
+                <strong><%= @intervals_in_ms.max %></strong><p>Interval<br>max<br>(ms)</p>
               </div>
               <div style="animation-delay:600ms;" class="perspective interval alerteOrange">
-                <strong><%= @intervals_in_ms.min %></strong><p>Interval<br>min </p>
+                <strong><%= @intervals_in_ms.min %></strong><p>Interval<br>min<br>(ms)</p>
               </div>
             </div>
             <div class="splitVertical">
               <div style="animation-delay:700ms;" class="perspective interval alerteRouge">
-                <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong><p>Delta ▲△</p>
+                <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong><p>Delta △ (ms)</p>
               </div>
               <div style="animation-delay:800ms;" class="perspective interval alerteVerte">
                 <strong>FA</strong><p>Type</p>
@@ -54,15 +54,15 @@
             </div>
             <div class="splitVertical">
               <div style="animation-delay:500ms;" class="perspective interval alerteRouge">
-                <strong><%= @intervals_in_ms.max %></strong><p>Interval<br> max</p>
+                <strong><%= @intervals_in_ms.max %></strong><p>Interval<br> max (ms)</p>
               </div>
               <div style="animation-delay:600ms;" class="perspective interval alerteRouge">
-                <strong><%= @intervals_in_ms.min %></strong><p>Interval<br>min </p>
+                <strong><%= @intervals_in_ms.min %></strong><p>Interval<br>min (ms)</p>
               </div>
             </div>
             <div class="splitVertical">
               <div style="animation-delay:700ms;" class="perspective interval alerteOrange">
-                <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong><p>Delta ▲△</p>
+                <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong><p>Delta △<br>(ms)</p>
               </div>
               <div style="animation-delay:800ms;" class="perspective interval alerteVerte">
                 <strong>Tachy</strong><p>Type</p>
@@ -79,15 +79,15 @@
             </div>
             <div class="splitVertical">
               <div style="animation-delay:500ms;" class="perspective interval alerteVerte">
-                <strong><%= @intervals_in_ms.max %></strong><p>Interval<br> max</p>
+                <strong><%= @intervals_in_ms.max %></strong><p>Interval<br>max<br>(ms)</p>
               </div>
               <div style="animation-delay:600ms;" class="perspective interval alerteVerte">
-                <strong><%= @intervals_in_ms.min %></strong><p>Interval<br>min </p>
+                <strong><%= @intervals_in_ms.min %></strong><p>Interval<br>min<br>(ms)</p>
               </div>
             </div>
             <div class="splitVertical">
               <div style="animation-delay:700ms;" class="perspective interval alerteVerte">
-                <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong><p>Delta ▲△</p>
+                <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong><p>Delta △ (ms)</p>
               </div>
               <div style="animation-delay:800ms;" class="perspective interval alerteVerte">
                 <strong>Sinus rythm</strong><p>Type</p>
