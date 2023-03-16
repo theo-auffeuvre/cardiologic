@@ -1,8 +1,9 @@
 
-Dear patient,
+Cher patient(e),
 
-A checkup with a cardiologist was recommended to you by your referring doctor.
-Please follow the link to make an appointement :
+Une consultation chez votre cardiologue vous a été recommandé par votre médecin traitant.
+Vous trouverez ci-joint,
+la liste des cardiologues à proximité et le lien pour prendre rendez-vous :
 
 <% cardiologists.each do |cardiologist| %>
   • <%= cardiologist["Libellé civilité d'exercice"] %> <%= cardiologist["Nom d'exercice"] %> <%= cardiologist["Prénom d'exercice"] %>
@@ -11,6 +12,6 @@ Please follow the link to make an appointement :
 <% end %>
 
 
-Sincerely,
+Bien cordialement,
 
-Your general praticioner
+Votre médecin référent.
