@@ -30,16 +30,21 @@
   // transform: perspective(100px) translateZ(0px);
   // transition: transform 100ms linear;
   // transition: all 0.3s ease;
+
 }
 
 #zone:hover {
-  border-color: #CCCCCC;
-  border-style: dash 10px;
-  background-color: $gray0;
+  // border-color: #CCCCCC;
+  // border-style: solid 10px;
+  // background-color: red;
   // transform: translateZ(16000px);
   transform: perspective(100px) translateZ(5px);
 
 
+}
+
+.zoneupload {
+  background-color: #FFFFFF;
 }
 
 .up {
