@@ -16,7 +16,7 @@
         </div>
       </div>
       <div style="background-color:white; border-radius:1rem; padding:1rem;" class="perspective_min">
-        <%= line_chart @data, min: 500, points: false, colors: ["#5f9ea0", "#a52a2a"], responsive: false %>
+        <%= line_chart @data, min: 500, points: false, colors: ["#5f9ea0", "#a52a2a"]%>
       </div>
     <div class="ekg-details">
           <% if @consultation.diagnostic == "orange"  %>
@@ -110,7 +110,7 @@
     <% elsif @consultation.diagnostic == "orange" %>
     </div>
 <!--- CAPSULE RIGHT --->
-      <div class="capsuleRightOrange scale-up-br d-flex flex-column">
+      <div class="capsuleRightOrange scale-up-br">
        <h3 style="font-size: 1.9rem; padding-bottom:2rem; margin-top:1rem;" >Find available cardiologists</h3>
 
         <div data-controller="search-cardio" class="search-bar" style="padding-top: 1rem;">
@@ -131,5 +131,3 @@
       </div>
     <% end %>
 </div> <!-- end ecg flex container -->
-
-<script>chart.resize()</script>
