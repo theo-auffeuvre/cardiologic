@@ -21,7 +21,7 @@
     <div class="ekg-details">
           <% if @consultation.diagnostic == "orange"  %>
           <div class="perspective_min alerte orange">
-            <span class="exclamation">!</span><p> WARNING : This EKG has irregular frequency. A checkup with a specialist is recommended.</p>
+            <span class="exclamation">!</span><p> WARNING : This EKG has an irregular frequency. A checkup with a specialist is recommended.</p>
           </div>
           <div class="ekg-list">
             <div style="animation-delay:0ms;" class="bpm perspective alerteVerte"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
@@ -46,7 +46,7 @@
           </div>
           <% elsif @consultation.diagnostic == "red" %>
             <div class="alerte perspective_min rouge">
-              <span class="exclamation">!</span><p> WARNING : This EKG has abnormal high frequency. <br>A cardiologist will contact you.  </p>
+              <span class="exclamation">!</span><p> WARNING : This EKG has an abnormally high frequency. <br>A cardiologist will contact you.  </p>
             </div>
             <div class="ekg-list">
             <div style="animation-delay:0ms;" class="perspective bpm alerteRouge"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
@@ -90,7 +90,7 @@
                 <strong><%= @intervals_in_ms.max - @intervals_in_ms.min %></strong><p>Delta △ (ms)</p>
               </div>
               <div style="animation-delay:800ms;" class="perspective interval alerteVerte">
-                <strong>Sinus rythm</strong><p>Type</p>
+                <strong>Sinus rhythm</strong><p>Type</p>
               </div>
             </div>
           </div>

@@ -19,17 +19,17 @@
 
         <% if consultation.diagnostic == "green" %>
         <div style="display: flex;">
-            <%= image_tag "courbblack.svg", alt:"green dot", width: "15%", class: "mx-2" %><p>NORMAL SINUS RYTHM</p>
+            <%= image_tag "courbblack.svg", alt:"green dot", width: "15%", class: "mx-2" %><p>NORMAL SINUS RHYTHM</p>
         </div>
          <%elsif consultation.diagnostic == "red"%>
          <div style="display: flex;">
          <%= image_tag "courbblack.svg", alt:"red dot", width: "15%", class: "mx-2" %>
-         <p>ARYTHMIA</p>
+         <p>ARRHYTHMIA</p>
          </div>
          <%elsif consultation.diagnostic =="orange"%>
          <div style="display: flex;">
          <%= image_tag "courbblack.svg", alt:"orange dot", width: "15%", class: "mx-2" %>
-         <p>ARYTHMIA</p>
+         <p>ARRHYTHMIA</p>
          </div>
          <%end%>
     </div>
