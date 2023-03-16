@@ -1,4 +1,4 @@
-<div class="card-consultation mb-4 ms-4 d-flex perspective_min " style="display: flex; height: 150px; width: 96%; border-radius: 0.2rem; background: rgb(245,245,245);">
+<div class="card-consultation mb-4 ms-4 d-flex perspective_min " style="height: 150px; width: 96%; border-radius: 0.2rem; background: rgb(245,245,245);">
     <% if consultation.diagnostic == "green" %>
     <div class="card-consultation green"></div>
     <%elsif consultation.diagnostic == "red"%>
@@ -6,7 +6,7 @@
     <%elsif consultation.diagnostic =="orange"%>
     <div class="card-consultation orange"></div>
     <%end%>
-    <div class="d-flex flex-column text-align-center text-center my-0 py-0" style="margin-top: 20px; margin-bottom: 15px; padding-left: 10px; padding-right: 10px; border-right: solid #CCCCCC; width: 20%">
+    <div class="date-container" style="">
       <div class="dateTop"><%= consultation.created_at.strftime("%A") %></div>
       <div class="display-2" style="font-weight:100;"> <%= consultation.created_at.strftime("%d") %></div>
       <div class="dateBottom"><%= consultation.created_at.strftime("%B") %></div>

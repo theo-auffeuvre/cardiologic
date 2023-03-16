@@ -15,6 +15,7 @@ $yellow: #FFC65A;
 
 $gray: #0E0000;
 $light_gray: hsl(0, 0%, 96%);
+$gray_warm: #ececec;
 $blacky: rgb(17,24,40);
 
 
@@ -62,6 +63,13 @@ $yellowLight: #f5f6da;
 $blue:#add8ff;
 $blueLight:#dceefd;
 $blueDark:#0f152b;
+
+$blueText:#5f9ea0;
+$brownText:#a52a2a;
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: $blueText;
+}
 
 
 $greenLight: #00E384;

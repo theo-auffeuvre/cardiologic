@@ -24,6 +24,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
+  // color: $gray40;
+
   // cursor: pointer;
   // transform: perspective(100px) translateZ(0px);
   // transition: transform 100ms linear;
@@ -36,6 +38,7 @@
   background-color: $gray0;
   // transform: translateZ(16000px);
   transform: perspective(100px) translateZ(5px);
+
 
 }
 
