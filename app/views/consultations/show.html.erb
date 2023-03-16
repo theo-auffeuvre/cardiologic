@@ -16,7 +16,7 @@
         </div>
       </div>
       <div style="background-color:white; border-radius:1rem; padding:1rem;" class="perspective_min">
-        <%= line_chart @data, min: 500, points: false, colors: ["#5f9ea0", "#a52a2a"] %>
+        <%= line_chart @data, min: 500, points: false, colors: ["#5f9ea0", "#a52a2a"], width: 678, height: 300 %>
       </div>
     <div class="ekg-details">
           <% if @consultation.diagnostic == "orange"  %>
