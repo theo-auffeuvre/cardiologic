@@ -10,8 +10,10 @@
   <% end %>
     <div class="w-100 mt-4 send-mail" data-controller="consultation-subscription" data-consultation-subscription-consultation-id-value=" <%= @consultation.id %>">
     <p class="mt-2 mb-2"><strong>Send this list to your patient</strong></p>
-    <input type="text" placeholder="patient@mail.com" data-search-cardio-target="mail">
-    <button class="envoi-email"><%= mail_to "theo.auffeuvre@gmail.com", ">", subject: "Your general practicioner send you the list of cardiologists near you", body: render(partial: 'cardiologists_mail', locals: {cardiologists: @cardiologists}, layout: false) %></button>
+      <div style="width:100%; display:flex; gap:10px;">
+        <input type="text" placeholder="patient@mail.com" data-search-cardio-target="mail" style="width:100%; border-radius:0.5rem; padding-left:0.5rem;">
+        <button class="envoi-email"><%= mail_to "theo.auffeuvre@gmail.com", "send", subject: "Your general practicioner send you the list of cardiologists near you", body: render(partial: 'cardiologists_mail', locals: {cardiologists: @cardiologists}, layout: false) %></button>
+      </div>
     </div>
 <% end %>
 

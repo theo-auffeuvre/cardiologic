@@ -18,7 +18,8 @@
 
 
 .alerte.orange {
-  background-color: $orange;
+  // background-color: $orange;
+  border-radius: $border-radius;
 }
 .alerte.rouge {
   background-color: $redDark;

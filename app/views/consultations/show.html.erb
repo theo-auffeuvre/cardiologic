@@ -21,7 +21,7 @@
     <div class="ekg-details">
           <% if @consultation.diagnostic == "orange"  %>
           <div class="perspective_min alerte orange">
-            <span class="exclamation">!</span><p> WARNING : This EKG has an irregular frequency. A checkup with a specialist is recommended.</p>
+            <span class="exclamation">!</span><p> WARNING : This EKG has an irregular frequency. <br>A checkup with a specialist is recommended.</p>
           </div>
           <div class="ekg-list">
             <div style="animation-delay:0ms;" class="bpm perspective alerteVerte"><strong><%= 60_000 / @intervals_in_ms.max %></strong><p>BPM</p>
@@ -116,10 +116,13 @@
         <div data-controller="search-cardio" class="search-bar" style="padding-top: 1rem;">
           <%= form_with url: search_cardio_consultation_path(@consultation),  html: {data: {search_cardio_target: "form"}} do |form| %>
           <div class="search-flex-container">
-            <div><strong style="margin-right:0.5rem; color:#ae480f;"><i class="fa-sharp fa-solid fa-location-dot"></i> </strong></div>
-            <div style="flex-grow: 1; display:flex;">
-              <div><%= form.text_field :place, value: params[:place], data: {search_cardio_target: "input"}, class:"search-form-input", autocomplete: "address-line1", style:"flex-grow:1;" %> </div>
-              <div><%= form.submit "Search", class: "envoi-email", data: {action: "click->search-cardio#update"} %></div>
+            <div>
+             <div style="display:flex;width: 100%;gap: 10px;">
+              <div style="position: relative;">
+                <i class="fa-sharp fa-solid fa-location-dot" style="position: absolute; left: 6px;/* background: red; */height: 100%; display: flex;align-items: center;"></i>
+                <input data-search-cardio-target="input" class="search-form-input" autocomplete="address-line1" style="flex-grow:1;padding-left: 27px;" type="text" name="place" id="place" browser-autofilled="">
+              </div>
+              <input type="submit" name="commit" value="Search" class="envoi-email" data-action="click->search-cardio#update" data-disable-with="Search" style="flex-grow: 1;">
             </div>
           </div>
           <% end %>
