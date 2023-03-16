@@ -1,0 +1,16 @@
+
+Dear patient,
+
+A checkup with a cardiologist was recommended to you by your referring doctor.
+Please follow the link to make an appointement :
+
+<% cardiologists.each do |cardiologist| %>
+  • <%= cardiologist["Libellé civilité d'exercice"] %> <%= cardiologist["Nom d'exercice"] %> <%= cardiologist["Prénom d'exercice"] %>
+    <%= cardiologist["Numéro Voie"] %> <%= cardiologist["Libellé Voie"] %> <%= cardiologist["Code Postal"] %> <%= cardiologist["Libellé commune"] %> ► <%= cardiologist["distance"].truncate(2)  %> km
+        https://www.doctolib.fr/cardiologue/lyon/<%= cardiologist["Prénom d'exercice"].downcase.sub(" ", "-") %>-<%= cardiologist["Nom d'exercice"].downcase.sub(" ", "-") %>
+<% end %>
+
+
+Sincerely,
+
+Your general praticioner
