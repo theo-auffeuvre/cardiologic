@@ -43,11 +43,11 @@ class ConsultationsController < ApplicationController
   end
 
   def send_mail
-    ConsultationMailer.send_email(params[:mail], @consultation, params[:place]).deliver_later
+    # ConsultationMailer.send_email(params[:mail], @consultation, params[:place]).deliver_later
+    # mail(to: params[:mail], subject: "Your general practicioner send you the list of cardiologists near you", body: render(partial: 'cardiologists_mail', locals: {cardiologists: @cardiologists}, layout: false))
   end
 
   def search_cardio
-    puts @cardiologists
     respond_to do |format|
       format.html
       format.text { render partial: "consultations/cardiologists", locals: {cardiologists: @cardiologists}, formats: [:html] }
