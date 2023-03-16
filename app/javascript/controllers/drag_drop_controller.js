@@ -24,23 +24,25 @@ export default class extends Controller {
     onInputChange(event) {
       console.log('On Input change triggered', this.inputTarget.files[0])
       this.zoneTarget.innerText = this.inputTarget.files[0]?.name;
-      this.zoneTarget.classList.add('hover');
+      // this.zoneTarget.classList.add('hover');
+      this.zoneTarget.classList.add('zoneupload');
     }
 
     drop(event) {
         event.preventDefault();
         this.inputTarget.files = event.dataTransfer.files;
         this.zoneTarget.innerText = event.dataTransfer.files[0].name;
+        this.zoneTarget.classList.add('zoneupload');
     }
 
     dragover(event) {
-      this.zoneTarget.classList.add('hover');
+
       event.preventDefault();
 
     }
 
     dragleave(event) {
-      this.zoneTarget.classList.remove('hover');
+      // this.zoneTarget.classList.remove('hover');
       event.preventDefault();
     }
   }
