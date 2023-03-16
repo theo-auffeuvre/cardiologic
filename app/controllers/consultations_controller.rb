@@ -47,7 +47,7 @@ class ConsultationsController < ApplicationController
   end
 
   def search_cardio
-    @cardiologists = Cardiologist.near(params[:place], 2, units: :km).first(5)
+    puts @cardiologists
     respond_to do |format|
       format.html
       format.text { render partial: "consultations/cardiologists", locals: {cardiologists: @cardiologists}, formats: [:html] }
