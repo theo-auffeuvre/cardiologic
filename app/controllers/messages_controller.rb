@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
   end
 
   def createsandwich
-    @consultation = Consultation.find(params[:consultation])
+    @consultation = Consultation.last
     @message = Message.new(content: params[:content])
     @message.consultation = @consultation
     @message.user = User.find(current_user.id)
