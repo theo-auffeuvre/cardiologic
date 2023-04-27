@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     post :send_mail, on: :member
   end
 
+  get "/yo", :to => redirect('/index.html')
+
   get "/sandwich", to: "consultations#sandwich"
   post "messages/createsandwich", to: "messages#createsandwich"
   get '/myprofile', to: 'users#myprofile'
